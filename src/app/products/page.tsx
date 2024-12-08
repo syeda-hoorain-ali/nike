@@ -14,11 +14,11 @@ const Page = () => {
   return (
     <main className="max-w-screen-xl mx-auto my-12">
 
-      <div className="flex justify-between mb-8">
-        <h3 className="text-2xl font-semibold">New (500)</h3>
+      <div className="flex justify-between mb-8 px-4 md:px-8 lg:px-0">
+        <h3 className="text-xl md:text-2xl font-semibold">New (500)</h3>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" onClick={() => setShowFilter(v => !v)}>
+          <Button variant="ghost" onClick={() => setShowFilter(v => !v)} className="hidden md:block">
             {showFilter ? "Hide Filters" : "Show Filters"}
             <FilterIcon />
           </Button>
@@ -28,7 +28,8 @@ const Page = () => {
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="ad">Ad</SelectItem>
+              <SelectItem value="price">Price</SelectItem>
+              <SelectItem value="date">Date</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -36,9 +37,11 @@ const Page = () => {
 
 
       <div className="min-h-screen flex gap-12">
-        <Filter showFilter={showFilter} />
+        <div className="hidden lg:block">
+          <Filter showFilter={showFilter} />
+        </div>
 
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 px-4 md:px-8 lg:px-0">
 
           {products.map(item => (
             <Card key={item.id} {...item} />

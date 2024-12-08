@@ -8,19 +8,19 @@ const page = () => {
   return (
     <main className="max-w-screen-xl mx-auto my-12">
 
-      <div className="flex flex-col gap-4 items-center mb-12">
+      <div className="mx-4 flex flex-col gap-4 items-center mb-12">
         <h2 className="text-3xl font-semibold uppercase">Get help</h2>
 
-        <div className="relative">
-          <Input placeholder="What can we help you with" className="h-12 w-[28rem]" />
+        <div className="relative w-full">
+          <Input placeholder="What can we help you with" className="h-12 w-full max-w-[28rem]" />
           <Button variant="ghost" size="icon" className="absolute top-1.5 right-2"><SearchIcon /></Button>
         </div>
       </div>
 
-      <div className="grid grid-rows-2 grid-cols-1 lg:grid-cols-[3fr_1fr] lg:grid-rows-1 gap-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] lg:grid-rows-1 gap-12">
 
-        <div>
-          <h2 className="text-3xl font-semibold uppercase mb-8">What payment options can i use on nike orders?</h2>
+        <div className="px-4 md:px-8 lg:px-0">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase mb-8">What payment options can i use on nike orders?</h2>
 
           <p className="my-4">We want to make buying your favourite Nike shoes and gear online fast and easy, and we accept the following payment options:</p>
 

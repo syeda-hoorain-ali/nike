@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 const page = () => {
   return (
-    <main className="max-w-screen-lg mx-auto my-4 h-screen grid gap-8 grid-cols-[2fr_1fr]">
+    <main className="max-w-screen-lg mx-auto my-4 grid gap-8 grid-cols-1 lg:grid-cols-[2fr_1fr]">
       <div className={inter.className}>
 
         <div className="p-4 flex flex-col bg-[#f7f7f7]">
@@ -19,7 +19,7 @@ const page = () => {
           </p>
         </div>
 
-        <h2 className="text-2xl font-semibold mt-4">Bag</h2>
+        <h2 className="text-2xl font-semibold mt-4 px-4 md:px-8 lg:px-0">Bag</h2>
 
         <div className="flex flex-col">
 
@@ -47,7 +47,7 @@ const page = () => {
 
       </div>
 
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 px-4 md:px-8 lg:px-0">
         <h3 className="text-xl font-semibold">Summary</h3>
 
         <div className="flex flex-col gap-3 text-md">

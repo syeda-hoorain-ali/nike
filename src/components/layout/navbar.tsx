@@ -35,7 +35,7 @@ const Navbar = () => {
         </Button>
 
         <Sheet>
-          <SheetTrigger asChild><Button variant="ghost" size="icon"><MenuIcon /></Button></SheetTrigger>
+          <SheetTrigger asChild><Button variant="ghost" size="icon" className="lg:hidden"><MenuIcon /></Button></SheetTrigger>
 
           <SheetContent>
             <ul className="flex flex-col gap-4 mt-8 font-semibold">

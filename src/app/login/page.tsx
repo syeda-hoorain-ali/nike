@@ -9,7 +9,7 @@ import Link from "next/link"
 
 const page = () => {
   return (
-    <main className="max-w-sm mx-auto mb-10 flex flex-col items-center">
+    <main className="max-w-sm mx-auto px-8 md:px-0 mb-10 flex flex-col items-center">
 
       <div className="flex flex-col gap-8 items-center my-8">
         <Logo />
@@ -18,11 +18,11 @@ const page = () => {
 
       <form className="max-w-80 flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          <Input className="rounded" placeholder="Password" />
-          <Input className="rounded" placeholder="Email address" />
+          <Input className="rounded p-4 h-12" placeholder="Password" />
+          <Input className="rounded p-4 h-12" placeholder="Email address" />
         </div>
 
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col gap-2 md:flex-row justify-normal md:justify-between items-center">
           <div className="flex items-center gap-1">
             <Checkbox id="checkbox" />
             <Label htmlFor="checkbox" className="text-[#8d8d8d] text-sm hover:text-black transition">Keep me signed in</Label>

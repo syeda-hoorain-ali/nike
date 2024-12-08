@@ -11,7 +11,7 @@ import Link from "next/link"
 
 const page = () => {
   return (
-    <main className="max-w-sm mx-auto mb-10 flex flex-col items-center">
+    <main className="max-w-sm mx-auto px-8 md:px-0 mb-10 flex flex-col items-center">
 
       <div className="flex flex-col gap-8 items-center my-8">
         <Logo />
@@ -21,18 +21,18 @@ const page = () => {
 
       <form className="max-w-80 flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          <Input className="rounded" placeholder="Email address" />
-          <Input className="rounded" placeholder="Password" />
-          <Input className="rounded" placeholder="First Name" />
-          <Input className="rounded" placeholder="Last Name" />
+          <Input className="rounded h-12 p-4" placeholder="Email address" />
+          <Input className="rounded h-12 p-4" placeholder="Password" />
+          <Input className="rounded h-12 p-4" placeholder="First Name" />
+          <Input className="rounded h-12 p-4" placeholder="Last Name" />
 
           <div className="flex flex-col items-center gap-2">
-            <Input className="rounded" placeholder="Date of Birth" />
+            <Input className="rounded h-12 p-4" placeholder="Date of Birth" />
             <p className="text-xs text-[#8d8d8d]">Get a Nike Member Reward every year on your Birthday.</p>
           </div>
 
           <Select>
-            <SelectTrigger className="w-full rounded">
+            <SelectTrigger className="w-full rounded h-12 p-4">
               <SelectValue placeholder="Country" className="text-muted-foreground"/>
             </SelectTrigger>
             <SelectContent>

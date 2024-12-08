@@ -20,13 +20,13 @@ const page = async ({ params }: Props) => {
   if (!product) notFound();
 
   return (
-    <main className="max-w-screen-xl mx-auto my-12 px-12">
-      <div className="grid gap-20 grid-rows-2 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2">
+    <main className="max-w-screen-xl mx-auto my-12 px-4 md:px-8 lg:px-12">
+      <div className="grid gap-20 grid-cols-1 lg:grid-rows-1 lg:grid-cols-2">
 
         <Image className="rounded" src={product.image} alt={product.name} height={653} width={653} />
 
         <div className={`${poppins.className}`}>
-          <h2 className="font-semibold text-5xl">{product.name}</h2>
+          <h2 className="font-semibold text-3xl md:text-4xl lg:text-5xl">{product.name}</h2>
           <p className="text-[#111] text-md mt-4">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus ea nobis quia soluta! Voluptatem porro 
             exercitationem aliquid magnam repellendus ducimus facilis consectetur. Animi dolores minima dolore quisquam id 
@@ -37,7 +37,7 @@ const page = async ({ params }: Props) => {
             dolor dolore asperiores earum sunt quasi nulla consequatur deserunt ipsum?
           </p>
 
-          <span className="block my-6 text-4xl">₹ {product.price}.00</span>
+          <span className="block my-6 text-3xl lg:text-4xl">₹ {product.price}.00</span>
           <Link href='/cart'><Button size="lg"><CartIcon /> Add To Cart</Button></Link>
         </div>
 

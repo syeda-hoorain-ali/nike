@@ -1,101 +1,223 @@
-import Image from "next/image";
+import ProductCard from "@/components/product-card"
+import { Button } from "@/components/ui/button"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Image from "next/image"
+import Link from "next/link"
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const page = () => {
+  return (<>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+    <div className="w-full py-2 bg-muted flex flex-col items-center">
+      <strong>Hello Nike App</strong>
+      <span className="text-sm">
+        Download the app to access everything Nike.
+        <Link className="font-semibold underline" href=''>Get Your Great</Link>
+      </span>
     </div>
-  );
+
+    <main className="max-w-screen-xl mx-auto">
+      <Image className="h-auto w-auto" src="/images/hero-image.png" alt="" height={700} width={1280} />
+
+      <div className="mt-12 flex flex-col gap-4 items-center">
+        <span className="font-semibold">First Look</span>
+        <h2 className="text-6xl font-bold uppercase">Nike air max pulse</h2>
+        <p className="max-w-xl px-3 text-center">Extreme comfort. Hyper durable. Max volume. Introducing the Air Max Pulse —designed to push you past your limits and help you go to the max.</p>
+
+        <div className="flex gap-4">
+          <Button className="px-6 h-10 capitalize">Notify me</Button>
+          <Button className="px-6 h-10 capitalize">Shop air max</Button>
+        </div>
+      </div>
+    </main>
+
+    <section className="max-w-screen-xl mx-auto my-20">
+      <Carousel opts={{ loop: true, align: 'start' }}>
+        <div className="flex justify-between">
+          <h3 className="text-2xl font-semibold my-4">Best of Air Max</h3>
+
+          <div className="flex items-center gap-4">
+            <span className="text-md font-semibold">Shop</span>
+
+            <div className="flex gap-4 w-28 relative items-center">
+              <CarouselPrevious className="size-12 bg-[#e5e5e5] static" />
+              <CarouselNext className="size-12 bg-[#e5e5e5] static" />
+            </div>
+
+          </div>
+        </div>
+
+        <CarouselContent>
+          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <ProductCard size="lg" image="/images/product/nike-air-max-plus.png" name="Nike air max plus" category="Women's shoes" price={13995} />
+          </CarouselItem>
+
+          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <ProductCard size="lg" image="/images/product/nike-air-max-plus.png" name="Nike air max plus" category="Men's shoes" price={13995} />
+          </CarouselItem>
+
+          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <ProductCard size="lg" image="/images/product/nike-air-max-97-se.png" name="Nike air max 97 SE" category="Men's shoes" price={16995} />
+          </CarouselItem>
+
+          <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+            <ProductCard size="lg" image="/images/product/nike-air-max-systm.png" name="Nike air max SYSTM" category="Women's shoes" price={16995} />
+          </CarouselItem>
+
+        </CarouselContent>
+
+      </Carousel>
+
+    </section>
+
+    <section className="max-w-screen-xl mx-auto">
+      <h3 className="text-2xl font-semibold my-4">Featured</h3>
+      <Image className="h-auto w-auto" src="/images/featured-image.png" alt="" height={700} width={1280} />
+
+      <div className="mt-12 flex flex-col gap-4 items-center">
+        <h2 className="text-6xl font-bold uppercase">Step into what feels good</h2>
+        <p className="max-w-xl px-3 text-center">Cause everyone should know the feeling of running in that perfect pair.</p>
+        <Button className="px-6 h-10 capitalize">Find your shoe</Button>
+      </div>
+    </section>
+
+    <section className="max-w-screen-xl mx-auto my-20">
+      <h3 className="text-2xl font-semibold my-4">Gear Up</h3>
+
+      <div className="grid grid-cols-2 gap-4">
+
+        <Carousel opts={{ loop: true, align: 'start' }}>
+          <div className="ml-4 flex justify-end items-center gap-4">
+            <span className="text-md font-semibold">Shop Men&apos;s</span>
+
+            <div className="flex gap-4 w-28 relative items-center">
+              <CarouselPrevious className="size-12 bg-[#e5e5e5] static" />
+              <CarouselNext className="size-12 bg-[#e5e5e5] static" />
+            </div>
+          </div>
+
+          <CarouselContent>
+            <CarouselItem className="lg:basis-1/2">
+              <ProductCard size="sm" image="/images/product/nike-dri-fit-sdv-techknit-ultra.png" name="Nike Dri-FIT ADV TechKnit Ultra" category="Men's Short-Sleeve Running Top" price={3895} />
+            </CarouselItem>
+
+            <CarouselItem className="lg:basis-1/2">
+              <ProductCard size="sm" image="/images/product/nike-dri-fit-challenger.png" name="Nike Dri-FIT Challenger" category="Men's 18cm (approx.) 2-in-1 Versatile Shorts" price={13995} />
+            </CarouselItem>
+
+            <CarouselItem className="lg:basis-1/2">
+              <ProductCard size="sm" image="/images/product/nike-air-max-97-se.png" name="Nike air max 97 SE" category="Men's shoes" price={2495} />
+            </CarouselItem>
+
+          </CarouselContent>
+        </Carousel>
+
+        <Carousel opts={{ loop: true, align: 'start' }}>
+          <div className="ml-4 flex justify-end items-center gap-4">
+            <span className="text-md font-semibold">Shop Women&apos;s</span>
+
+            <div className="flex gap-4 w-28 relative items-center">
+              <CarouselPrevious className="size-12 bg-[#e5e5e5] static" />
+              <CarouselNext className="size-12 bg-[#e5e5e5] static" />
+            </div>
+          </div>
+
+          <CarouselContent>
+            <CarouselItem className="lg:basis-1/2">
+              <ProductCard size="sm" image="/images/product/nike-dri-fit-sdv-techknit-ultra.png" name="Nike Dri-FIT ADV TechKnit Ultra" category="Men's Short-Sleeve Running Top" price={3895} />
+            </CarouselItem>
+
+            <CarouselItem className="lg:basis-1/2">
+              <ProductCard size="sm" image="/images/product/nike-dri-fit-challenger.png" name="Nike Dri-FIT Challenger" category="Men's 18cm (approx.) 2-in-1 Versatile Shorts" price={13995} />
+            </CarouselItem>
+
+            <CarouselItem className="lg:basis-1/2">
+              <ProductCard size="sm" image="/images/product/nike-air-max-97-se.png" name="Nike air max 97 SE" category="Men's shoes" price={2495} />
+            </CarouselItem>
+
+          </CarouselContent>
+        </Carousel>
+
+      </div>
+    </section>
+
+    <section className="max-w-screen-xl mx-auto">
+      <h3 className="text-2xl font-semibold my-4">Don&apos;t Miss</h3>
+      <Image className="h-auto w-auto" src="/images/section-2.png" alt="" height={700} width={1280} />
+
+      <div className="mt-12 flex flex-col gap-4 items-center">
+        <h2 className="text-6xl font-bold uppercase">Flight essentials</h2>
+        <p className="max-w-xl px-3 text-center">Your built-to-last, all-week wears—but with style only Jordan Brand can deliver.</p>
+        <Button className="px-6 h-10 capitalize">Shop</Button>
+      </div>
+    </section>
+
+    <section className="max-w-screen-xl mx-auto my-20">
+      <h3 className="text-2xl font-semibold my-4">The Essentials</h3>
+
+      <div className="grid grid-cols-3 gap-2">
+
+        <div className="card relative">
+          <Image src="/images/mens.png" alt="Men's" width={440} height={540} />
+          <span className="absolute left-8 bottom-8 px-4 py-2 text-md font-semibold bg-white rounded-full shadow">Men&apos;s</span>
+        </div>
+
+        <div className="card relative">
+          <Image src="/images/womens.png" alt="Women's" width={440} height={540} />
+          <span className="absolute left-8 bottom-8 px-4 py-2 text-md font-semibold bg-white rounded-full shadow">Women&apos;s</span>
+        </div>
+
+        <div className="card relative">
+          <Image src="/images/kids.png" alt="Kid's" width={440} height={540} />
+          <span className="absolute left-8 bottom-8 px-4 py-2 text-md font-semibold bg-white rounded-full shadow">Kids&apos;s</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section className="max-w-screen-lg mx-auto my-20 flex justify-between">
+    
+    <div className="w-44">
+      <strong className="text-md font-semibold mb-8 block">Icons</strong>
+      <ul className="flex flex-col gap-4 capitalize text-[#757575] font-meduim">
+        <li><Link className="hover:text-black transition-all" href=''>Air force 1</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Huarache</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Air max 90</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Air max 95</Link></li>
+      </ul>
+    </div>
+
+    <div className="w-44">
+      <strong className="text-md font-semibold mb-8 block">Shoes</strong>
+      <ul className="flex flex-col gap-4 capitalize text-[#757575] font-meduim">
+        <li><Link className="hover:text-black transition-all" href=''>All shoes</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Custom shoes</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Jordan shoes</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Running shoes</Link></li>
+      </ul>
+    </div>
+
+    <div className="w-44">
+      <strong className="text-md font-semibold mb-8 block">Clothing</strong>
+      <ul className="flex flex-col gap-4 capitalize text-[#757575] font-meduim">
+        <li><Link className="hover:text-black transition-all" href=''>All clothing</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Modest wear</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Hoodies & pullovers</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Shirts & tops</Link></li>
+      </ul>
+    </div>
+
+    <div className="w-44">
+      <strong className="text-md font-semibold mb-8 block">Kids</strong>
+      <ul className="flex flex-col gap-4 capitalize text-[#757575] font-meduim">
+        <li><Link className="hover:text-black transition-all" href=''>Infant & toddler</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Kid&apos;s shoes</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Kid&apos;s jordan shoes</Link></li>
+        <li><Link className="hover:text-black transition-all" href=''>Kid&apos;s basketball shoes</Link></li>
+      </ul>
+    </div>
+    
+    </section>
+  </>)
 }
+
+export default page

@@ -1,0 +1,253 @@
+[
+    {
+        "id": 1,
+        "name": "Nike Air Force 1 Mid '07",
+        "image": "/images/product/nike-air-force-1-mid-07.png",
+        "category": "Men's Shoes",
+        "price": 10795,
+        "colors": 1
+    },
+    {
+        "id": 2,
+        "name": "Nike Court Vision Low Next Nature",
+        "image": "/images/product/nike-court-vision-low.png",
+        "category": "Men's Shoes",
+        "price": 4995,
+        "colors": 1
+    },
+    {
+        "id": 3,    
+        "name": "Nike Air Force PLT.AF.ORM",
+        "image": "/images/product/nike-air-force-pltaform.png",
+        "category": "Men's Shoes",
+        "price": 8695,
+        "colors": 1
+    },
+    {
+        "id": 4,
+        "name": "Nike Air Force 1 React",
+        "image": "/images/product/nike-air-force-1-react.png",
+        "category": "Men's Shoes",
+        "price": 13295,
+        "colors": 1
+    },
+    {
+        "id": 5,
+        "name": "Air Jordan 1 Elevate Low",
+        "image": "/images/product/air-jordan-1-elevate-low.png",
+        "category": "Women's Shoes",
+        "label": "Promo exclusion",
+        "price": 11895,
+        "colors": 1
+    },
+    {
+        "id": 6,    
+        "name": "Nike Standard Lssue",
+        "image": "/images/product/nike-standard-lssue.png",
+        "category": "Woman's Basketall Jersey",
+        "price": 2895,
+        "colors": 1
+    },
+    {
+        "id": 7,
+        "name": "Nike Dunk Low Retro SE",
+        "image": "/images/product/nike-dunk-low-retro-se.png",
+        "category": "Men's Shoes",
+        "label": "Promo exclusion",
+        "price": 9695,
+        "colors": 1
+    },
+    {
+        "id": 8,
+        "name": "Nike Dri-FIT UV Hyverse",
+        "image": "/images/product/nike-dri-fit-uv-hyverse.png",
+        "category": "Men's Shoes-Sleeve Graphic Fitness Top",
+        "label": "Sustainable materialsc",
+        "price": 2595,
+        "colors": 1
+    },
+    {
+        "id": 9,    
+        "name": "Nike Court Vision Low",
+        "image": "/images/product/nike-court-vision-low.png",
+        "category": "Men's Shoes",
+        "price": 5695,
+        "colors": 1
+    },
+    {
+        "id": 10,
+        "name": "Nike Dri-FIT Ready",
+        "image": "/images/product/nike-dri-fit-ready.png",
+        "category": "Men's Short-Sleeve Fitness Top",
+        "price": 10795,
+        "colors": 1
+    },
+    {
+        "id": 11,
+        "name": "Nike Court Vision Low Next Nature",
+        "image": "/images/product/nike-court-vision-low-next-nature.png",
+        "category": "Men's Shoes",
+        "price": 2495,
+        "colors": 3
+    },
+    {
+        "id": 12,    
+        "name": "Nike One Leak Protection: Period",
+        "image": "/images/product/nike-one-leak-protection-period.png",
+        "category": "Women's Mid-Rise 18cm (approx.) biker Shorts",
+        "price": 3395,
+        "colors": 2
+    },
+    {
+        "id": 13,
+        "name": "Nike Air Force 1 LV8 3",
+        "image": "/images/product/nike-air-force-1-lv8-3.png",
+        "category": "Older Kids' Shoe",
+        "price": 7495,
+        "colors": 1
+    },
+    {
+        "id": 14,
+        "name": "Nike Blazer Low Platform",
+        "image": "/images/product/nike-blazer-low-platform.png",
+        "category": "Women's Shoes",
+        "price": 8195,
+        "colors": 1
+    },
+    {
+        "id": 15,    
+        "name": "Nike Air Force 1 '07",
+        "image": "/images/product/nike-air-force-1-07.png",
+        "category": "Women's Shoes",
+        "price": 8195,
+        "colors": 2
+    },
+    {
+        "id": 16,
+        "name": "Nike Dunk Low Retro",
+        "image": "/images/product/nike-dunk-low-retro.png",
+        "category": "Men's Shoes",
+        "price": 8695,
+        "colors": 1
+    },
+    {
+        "id": 17,
+        "name": "Nike Air Max SC",
+        "image": "/images/product/nike-air-max-sc.png",
+        "category": "Women's Shoes",
+        "price": 5995,
+        "colors": 2
+    },
+    {
+        "id": 18,    
+        "name": "Nike Dri-FIT UV Miler",
+        "image": "/images/product/nike-dri-fit-uv-miler.png",
+        "category": "Men's Short-Sleeve Running Top",
+        "price": 1695,
+        "colors": 1
+    },
+    {
+        "id": 19,
+        "name": "Nike Air Max SYSTM",
+        "image": "/images/product/nike-air-max-systm.png",
+        "category": "Older Kids' Shoe",
+        "price": 6495,
+        "colors": 1
+    },
+    {
+        "id": 20,
+        "name": "Nike Alate All U",
+        "image": "/images/product/nike-alate-all-u.png",
+        "category": "Women's Light-Support Lightly Lined U-Neck Printed Sports Bra",
+        "price": 2195,
+        "colors": 1
+    },
+    {
+        "id": 21,    
+        "name": "Nike Court Legacy Lift",
+        "image": "/images/product/nike-court-legacy-lift.png",
+        "category": "Women's Shoes",
+        "price": 7495,
+        "colors": 2
+    },
+    {
+        "id": 22,
+        "name": "Nike Swoosh",
+        "image": "/images/product/nike-swoosh.png",
+        "category": "Women's Medium-support Padded Sports Bra Tank",
+        "price": 3095,
+        "colors": 2
+    },
+    {
+        "id": 23,
+        "name": "Nike SB Zoom Janoski OG+",
+        "image": "/images/product/nike-sb-zoom-janoski-og.png",
+        "category": "Shoes",
+        "price": 8595,
+        "colors": 1
+    },
+    {
+        "id": 24,    
+        "name": "Nike Air Force PLT.AF.ORM",
+        "image": "/images/product/nike-air-force-pltaform.png",
+        "category": "Men's Shoes",
+        "price": 8695,
+        "colors": 1
+    },
+    {
+        "id": 25,    
+        "name": "Nike Dri-FIT Run Division Rise 365",
+        "image": "/images/product/nike-dri-fit-run-division-rise-365.png",
+        "category": "Men's Running Tank",
+        "price": 3495,
+        "colors": 2
+    },
+    {
+        "id": 26,    
+        "name": "Nike Dri-FIT Challenger",
+        "image": "/images/product/nike-dri-fit-challenger.png",
+        "category": "Men's 18cm (approx.) 2-in-1 Versatile Shorts",
+        "price": 2495,
+        "colors": 1
+    },
+    {
+        "id": 27,    
+        "name": "Jordan Series ES",
+        "image": "/images/product/jordan-series-es.png",
+        "category": "Men's 18cm (approx.) 2-in-1 Versatile Shorts",
+        "price": 2495,
+        "colors": 1
+    },
+    {
+        "id": 28,    
+        "name": "Nike Outdoor Play",
+        "image": "/images/product/nike-outdoor-play.png",
+        "category": "Older Kids' Oversized Woven Jacket",
+        "price": 3895,
+        "colors": 1
+    },
+    {
+        "id": 29,    
+        "name": "Nike Sportswear Trend",
+        "image": "/images/product/nike-sportswear-trend.png",
+        "category": "Older Kids' (Girls') High-waisted Woven Shorts",
+        "price": 2495,
+        "colors": 2
+    },
+    {
+        "id": 30,    
+        "name": "Nike Blazer Low '77 Jumbo.png",
+        "image": "/images/product/nike-blazer-low-77-jumbo.png",
+        "category": "Women's Shoes",
+        "price": 8595,
+        "colors": 1
+    },
+    {
+        "id": 31,    
+        "name": "Nike SB Force 58",
+        "image": "/images/product/nike-sb-force-58.png",
+        "category": "Skate Shoe",
+        "price": 5995,
+        "colors": 1
+    }
+]

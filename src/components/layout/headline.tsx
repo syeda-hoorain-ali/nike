@@ -7,9 +7,9 @@ const Headline = () => {
       <div className="max-w-screen-xl mx-auto h-9 flex items-center justify-between">
         <SportsMan />
 
-        <button className="bg-white px-2 py-1 text-sm translate-x-full">Skip to main content</button>
+        <button className="bg-white px-2 py-1 text-sm lg:translate-x-full">Skip to main content</button>
 
-        <div className="flex gap-2 text-sm">
+        <div className="hidden lg:flex gap-2 text-sm">
           <Link href=''>Find a store</Link>
           <span>|</span>
           <Link href=''>Help</Link>

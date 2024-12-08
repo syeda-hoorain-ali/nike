@@ -10,12 +10,14 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ image, name, price, category, size }: ProductCardProps) => {
-  
+
   const px = size === 'sm' ? 300 : 441;
-  
+
   return (
-    <div style={{width: px}}>
-      <Image className="h-auto w-auto rounded" src={image} alt={name} height={px} width={px} />
+    <div style={{ width: px }} className="max-w-full px-4">
+      <div className="relative w-full aspect-square">
+        <Image className="rounded" src={image} alt={name} fill />
+      </div>
 
       <div className={cn("flex justify-between mt-5", size === 'sm' ? 'pr-2' : 'pr-4')}>
         <div className="flex flex-col">

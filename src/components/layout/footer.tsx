@@ -7,9 +7,9 @@ const Footer = () => {
 
   return (
     <footer className="w-full pt-20 bg-[#111111]">
-      <div className="max-w-screen-xl mx-auto grid grid-cols-2">
+      <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2">
 
-        <div className="flex">
+        <div className="flex flex-wrap px-4 gap-y-6">
 
           <ul className="min-w-60 flex flex-col gap-4 text-xs text-white uppercase">
             <li><Link className="transition-all hover:underline" href='#'>Find a store</Link></li>
@@ -19,7 +19,7 @@ const Footer = () => {
             <li><Link className="transition-all hover:underline" href='#'>Student discounts</Link></li>
           </ul>
 
-          <ul className="min-w-60 flex flex-col gap-4 text-xs capitalize text-[#7e7e7e]">
+          <ul className="w-36 md:min-w-60 flex flex-col gap-4 text-xs capitalize text-[#7e7e7e]">
             <li><Link className="transition-all text-white uppercase hover:underline" href='#'>Get help</Link></li>
             <li><Link className="transition-all hover:text-white" href='#'>Order status</Link></li>
             <li><Link className="transition-all hover:text-white" href='#'>Delivery</Link></li>
@@ -29,7 +29,7 @@ const Footer = () => {
             <li><Link className="transition-all hover:text-white" href='#'>Contact us on all other inquiries</Link></li>
           </ul>
 
-          <ul className="min-w-60 flex flex-col gap-4 text-xs capitalize text-[#7e7e7e]">
+          <ul className="w-36 md:min-w-60 pl-6 md:pl-0 flex flex-col gap-4 text-xs capitalize text-[#7e7e7e]">
             <li><Link className="transition-all text-white uppercase hover:underline" href='#'>About nike</Link></li>
             <li><Link className="transition-all hover:text-white" href='#'>News</Link></li>
             <li><Link className="transition-all hover:text-white" href='#'>Careers</Link></li>
@@ -39,7 +39,7 @@ const Footer = () => {
 
         </div>
 
-        <div className="flex gap-4 justify-end items-start">
+        <div className="my-8 lg:my-0 flex gap-4 justify-center lg:justify-end items-start">
           <Link className="transition-all hover:text-white" href='https://www.twitter.com/'><TwitterIcon /></Link>
           <Link className="transition-all hover:text-white" href='https://www.facebook.com/'><FacebookIcon /></Link>
           <Link className="transition-all hover:text-white" href='https://www.youtube.com/'><YoutubeIcon /></Link>
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="max-w-screen-xl mx-auto pt-10 py-5 px-4 flex justify-between">
+      <div className="max-w-screen-xl mx-auto pt-10 py-5 px-2 md:px-4 flex gap-4 flex-col-reverse md:flex-row justify-between">
 
         <div className="flex gap-4 items-center">
           <LocationIcon />
@@ -55,7 +55,7 @@ const Footer = () => {
           <p className="text-[#7e7e7e] text-xs">&copy; {year} Nike, Inc. All Rights Reserved</p>
         </div>
 
-        <ul className="flex gap-4 text-[#7e7e7e] text-sm">
+        <ul className="flex flex-wrap gap-x-4 gap-y-2 text-[#7e7e7e] text-sm">
           <li><Link className="transition hover:text-white" href='/contact-us'>Guides</Link></li>
           <li><Link className="transition hover:text-white" href='/contact-us'>Terms of Sale</Link></li>
           <li><Link className="transition hover:text-white" href='/contact-us'>Terms of Use</Link></li>

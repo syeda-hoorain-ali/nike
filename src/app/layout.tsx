@@ -49,7 +49,7 @@ export default function RootLayout({
         ${helveticaHeavy.variable} 
         ${helveticaLight.variable} 
         ${helveticaMedium.variable}
-        antialiased`}
+        antialiased overflow-x-hidden`}
         cz-shortcut-listen="true"
       >
         <Headline />

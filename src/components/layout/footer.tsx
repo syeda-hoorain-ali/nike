@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="w-full pt-20 bg-[#111111]">
       <div className="max-w-screen-xl mx-auto grid grid-cols-1 lg:grid-cols-2">
 
-        <div className="flex flex-wrap px-4 gap-y-6">
+        <div className="flex flex-wrap lg:flex-nowrap px-4 gap-y-6">
 
           <ul className="min-w-60 flex flex-col gap-4 text-xs text-white uppercase">
             <li><Link className="transition-all hover:underline" href='#'>Find a store</Link></li>

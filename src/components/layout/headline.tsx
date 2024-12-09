@@ -10,13 +10,13 @@ const Headline = () => {
         <button className="bg-white px-2 py-1 text-sm lg:translate-x-full">Skip to main content</button>
 
         <div className="hidden lg:flex gap-2 text-sm">
-          <Link href=''>Find a store</Link>
+          <Link href='/'>Find a store</Link>
           <span>|</span>
-          <Link href=''>Help</Link>
+          <Link href='/contact-us'>Help</Link>
           <span>|</span>
-          <Link href=''>Join us</Link>
+          <Link href='/signup'>Join us</Link>
           <span>|</span>
-          <Link href=''>Sign in</Link>
+          <Link href='/login'>Sign in</Link>
         </div>
 
       </div>

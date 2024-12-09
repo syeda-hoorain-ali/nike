@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from "react";
 import products from '../../products.json';
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Page = () => {
   const [showFilter, setShowFilter] = useState<boolean>(true)
@@ -18,10 +19,24 @@ const Page = () => {
         <h3 className="text-xl md:text-2xl font-semibold">New (500)</h3>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" onClick={() => setShowFilter(v => !v)} className="hidden md:block">
+          <Button variant="ghost" onClick={() => setShowFilter(v => !v)} className="hidden lg:flex">
             {showFilter ? "Hide Filters" : "Show Filters"}
             <FilterIcon />
           </Button>
+
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" className="flex lg:hidden">
+                <span className="hidden md:inline">Show Filters</span>
+                <FilterIcon />
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent side="left">
+              <Filter showFilter />
+            </SheetContent>
+          </Sheet>
+
 
           <Select>
             <SelectTrigger>

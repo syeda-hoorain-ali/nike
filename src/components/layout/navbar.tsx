@@ -1,12 +1,17 @@
+"use client";
+
 import Link from "next/link"
 import { HeartIcon, Logo, SearchIcon, ShoppingBagIcon } from "../icons"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import { MenuIcon } from "lucide-react"
+import { useShoppingCart } from "use-shopping-cart";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
-  const links = ['New & Featured', 'Men', 'Women', 'Kids', 'Sale', 'SNKRS']
+  const links = ['New & Featured', 'Men', 'Women', 'Kids', 'Sale', 'SNKRS'];
+  const { cartCount } = useShoppingCart();
 
   return (
     <nav className="max-w-screen-xl mx-auto py-4 pl-4 md:px-8 lg:px-0 flex items-center justify-between">
@@ -30,8 +35,14 @@ const Navbar = () => {
           <Link className="hover:text-black" href='/cart'><HeartIcon /></Link>
         </Button>
 
-        <Button variant="ghost" size="icon" className="rounded-full">
+        <Button variant="ghost" size="icon" className="rounded-full relative">
           <Link className="hover:text-black" href='/cart'><ShoppingBagIcon /></Link>
+          <span className={cn(
+            "absolute right-0.5 top-0.5 flex items-center justify-center rounded-full size-3.5 bg-destructive text-[0.6rem] text-white",
+            cartCount == 0 ? 'hidden' : 'flex'
+          )}>
+            {cartCount}
+          </span>
         </Button>
 
         <Sheet>

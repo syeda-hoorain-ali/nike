@@ -1,17 +1,8 @@
+import { IProduct } from "@/types/data";
 import Image from "next/image";
 import Link from "next/link";
 
-interface CardProps {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  colors: number;
-  category: string;
-  label?: string;
-}
-
-const Card = ({ id, name, image, price, colors, category, label = 'Just in' }: CardProps) => {
+const Card = ({ id, name, image, price, colors, category, label }: IProduct) => {
   return (
     <div className="max-w-[20.7rem]">
       <Link href={`/product/${id}`}>
@@ -21,8 +12,8 @@ const Card = ({ id, name, image, price, colors, category, label = 'Just in' }: C
       <div className="flex flex-col mt-4 text-md capitalize">
         <span className="text-[#9e3500] font-semibold">{label}</span>
         <Link href={`/product/${id}`} className="font-semibold hover:underline">{name}</Link>
-        <span className="text-[#757575]">{category}</span>
-        <span className="text-[#757575]">{colors} {colors === 1 ? ' Color' : ' Colors'}</span>
+        <span className="text-[#757575]">{category.name}</span>
+        <span className="text-[#757575]">{colors.length} {colors.length === 1 ? ' Color' : ' Colors'}</span>
       </div>
 
       <span className="text-md font-semibold my-4 block">MRP : ₹ {price}.00</span>

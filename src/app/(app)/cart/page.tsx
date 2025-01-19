@@ -4,12 +4,13 @@ import CartProduct from "@/components/cart-product"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { Inter } from "next/font/google"
+import Image from "next/image";
 import Link from "next/link"
 import { useShoppingCart } from "use-shopping-cart"
 
 const inter = Inter({ subsets: ["latin"] });
 
-const page = () => {
+const Page = () => {
 
   const { cartCount, cartDetails, totalPrice, redirectToCheckout } = useShoppingCart()
 
@@ -41,7 +42,7 @@ const page = () => {
         <div className="flex flex-col">
           {cartCount === 0 && (
             <div className="flex flex-col items-center justify-center gap-4 p-4 md:p-8 lg:p-0">
-              <img src="/images/empty-cart.svg" alt="Empty Cart" className="w-1/2" />
+              <Image src="/images/empty-cart.svg" alt="Empty Cart" width={400} height={200} className="w-1/2" />
               <p className="text-lg text-center">
                 Your cart is empty. {' '}
                 <Link href="/products" className="text-blue-600 underline underline-offset-2 hover:no-underline transition-all">Start shopping</Link>
@@ -123,4 +124,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

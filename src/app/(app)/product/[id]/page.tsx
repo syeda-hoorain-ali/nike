@@ -2,11 +2,9 @@
 import { Poppins } from "next/font/google";
 import Image from "next/image"
 import Link from "next/link";
-import products from "@/products.json";
 import { notFound } from "next/navigation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { IProduct } from "@/types/data";
-import { AddToCartButton } from "@/components/buttons";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import ProductPageSkeleton from "@/components/skeletons/product-page";

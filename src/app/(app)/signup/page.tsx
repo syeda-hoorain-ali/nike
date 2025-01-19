@@ -34,6 +34,8 @@ const Page = () => {
 
   const onSubmit = async (data: FormData) => {
 
+    type Error = { errors: { message: string }[] }
+
     try {
 
       const response = await signUp?.create({
@@ -47,7 +49,7 @@ const Page = () => {
     } catch (error) {
       console.error("error from login page");
       console.error(error);
-      toast.error((error as any).errors[0].message)
+      toast.error((error as Error).errors[0].message)
     }
 
   }
@@ -67,7 +69,7 @@ const Page = () => {
 
           <FormField
             name="password"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 {/* <FormLabel /> */}
                 <FormControl>
@@ -80,7 +82,7 @@ const Page = () => {
 
           <FormField
             name="email"
-            render={({field}) => (
+            render={({ field }) => (
               <FormItem>
                 {/* <FormLabel /> */}
                 <FormControl>
@@ -92,7 +94,7 @@ const Page = () => {
           />
 
 
-            <Button>sign up</Button>
+          <Button>sign up</Button>
 
         </form>
       </Form>

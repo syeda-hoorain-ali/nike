@@ -30,8 +30,10 @@ const Page = () => {
 
   const onSubmit = async (data: FormData) => {
 
+    type Error = { errors: { message: string }[] }
+
     try {
-      
+
       const response = await signIn?.create({
         identifier: data.email,
         password: data.password,
@@ -43,7 +45,7 @@ const Page = () => {
     } catch (error) {
       console.error("error from login page");
       console.error(error);
-      toast.error((error as any).errors[0].message)
+      toast.error((error as Error).errors[0].message)
     }
 
   }

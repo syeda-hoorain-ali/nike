@@ -1,3 +1,5 @@
+import { CartEntry } from "use-shopping-cart/core";
+
 export interface IProduct {
     id: number;
     name: string;
@@ -8,4 +10,11 @@ export interface IProduct {
     colors: string[];
     label: string;
     size: string[];
+}
+
+export interface ICartProduct extends CartEntry {
+    product_data?: {
+        colors: string[];
+        sizes: string[];
+    }
 }

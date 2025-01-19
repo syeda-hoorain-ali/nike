@@ -3,6 +3,7 @@
 import CartProduct from "@/components/cart-product"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { ICartProduct } from "@/types/data";
 import { Inter } from "next/font/google"
 import Image from "next/image";
 import Link from "next/link"
@@ -13,6 +14,7 @@ const inter = Inter({ subsets: ["latin"] });
 const Page = () => {
 
   const { cartCount, cartDetails, totalPrice, redirectToCheckout } = useShoppingCart()
+  const cart: ICartProduct[] = Object.values(cartDetails ?? {}) as ICartProduct[]
 
   const handleCheckout = async () => {
     try {
@@ -50,15 +52,15 @@ const Page = () => {
             </div>
           )}
 
-          {Object.values(cartDetails ?? {}).map((entry: any) => (
+          {cart.map(entry => (
             <CartProduct
               key={entry.id}
               id={entry.id}
               name={entry.name}
               category={entry.description!}
-              colors={entry.product_data?.colors}
+              colors={entry.product_data?.colors || []}
               image={entry.image!}
-              size={entry.product_data?.size}
+              size={entry.product_data?.sizes || []}
               price={entry.formattedValue!}
               quantity={entry.quantity}
             />

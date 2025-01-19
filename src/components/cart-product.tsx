@@ -11,8 +11,8 @@ interface CartProductProps {
   name: string;
   category: string;
   colors: string[];
-  price: number;
-  size: string;
+  price: number | string;
+  size: string[];
   quantity: number;
 }
 

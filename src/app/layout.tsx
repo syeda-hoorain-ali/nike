@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Headline from "@/components/layout/headline";
-import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
+import { ToastContainer } from 'react-toastify';
 
 // Helvetica Neue
 
@@ -52,9 +51,8 @@ export default function RootLayout({
         antialiased overflow-x-hidden`}
         cz-shortcut-listen="true"
       >
-        <Headline />
-        <Navbar />
         {children}
+        <ToastContainer autoClose={2000} />
         <Footer />
       </body>
     </html>

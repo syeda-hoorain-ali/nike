@@ -23,6 +23,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #cccccc;
   transition: 0.5s;
+  color: cornflowerblue;
 }
 
 .a {

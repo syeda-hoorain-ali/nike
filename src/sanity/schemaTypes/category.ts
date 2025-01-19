@@ -1,11 +1,11 @@
-import { FilesIcon } from "lucide-react";
+import { CategoryIcon } from "../components";
 import { defineField, defineType } from "sanity";
 
 export const category = defineType({
     name: 'categories',
     title: 'Categories',
     type: 'document',
-    icon: FilesIcon,
+    icon: CategoryIcon,
 
     fields: [
         defineField({

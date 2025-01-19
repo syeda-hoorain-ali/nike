@@ -1,4 +1,4 @@
-import { ShoppingBagIcon } from "lucide-react";
+import { OrderIcon } from "../components";
 import { defineField, defineType } from "sanity";
 
 export const order = defineType({
@@ -6,7 +6,7 @@ export const order = defineType({
     title: "Orders",
     type: "document",
     readOnly: true,
-    icon: ShoppingBagIcon,
+    icon: OrderIcon,
 
     groups: [
         { name: 'order-details', title: 'Order details', default: true },

@@ -3,14 +3,12 @@
 import { ObjectInputProps } from "sanity";
 import { Flex, Text } from "@sanity/ui";
 import { Rating as ReactRating } from '@smastrom/react-rating';
+import { FilesIcon, ShirtIcon, ShoppingBagIcon } from "lucide-react";
 import '@smastrom/react-rating/style.css';
 
-type RatingProps = ObjectInputProps<{ stars: number; count: number }>
+type RatingProps = ObjectInputProps<Record<string, number>>
 
-export const Rating = (props: RatingProps) => {
-
-  const { value } = props
-  console.log(props)
+export const Rating = ({ value }: RatingProps) => {
 
   if (!value) return <Text>No rating available</Text>;
 
@@ -21,3 +19,7 @@ export const Rating = (props: RatingProps) => {
     </Flex>
   )
 }
+
+export const OrderIcon = () => <ShoppingBagIcon />
+export const ProductsIcon = () => <ShirtIcon />
+export const CategoryIcon = () => <FilesIcon />

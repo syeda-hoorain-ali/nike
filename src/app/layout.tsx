@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/layout/footer";
 import { ToastContainer } from 'react-toastify';
+import CartProvider from "@/components/layout/provider";
 
 // Helvetica Neue
 
@@ -51,9 +52,11 @@ export default function RootLayout({
         antialiased overflow-x-hidden`}
         cz-shortcut-listen="true"
       >
-        {children}
-        <ToastContainer autoClose={2000} />
-        <Footer />
+        <CartProvider>
+          {children}
+          <ToastContainer autoClose={2000} />
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

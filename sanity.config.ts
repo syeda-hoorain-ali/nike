@@ -6,7 +6,6 @@ import { structureTool } from 'sanity/structure'
 import { apiVersion, dataset, projectId } from '@/sanity/env'
 import { schema } from '@/sanity/schemaTypes'
 import { structure } from '@/sanity/structure'
-import Icon from '@/sanity/components'
 import { Logo } from '@/components/icons'
 
 export default defineConfig({

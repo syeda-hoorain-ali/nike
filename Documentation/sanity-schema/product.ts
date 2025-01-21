@@ -1,12 +1,11 @@
 import { defineField, defineType } from "sanity";
-import { ShirtIcon } from "lucide-react";
-import { Rating } from "../components";
+import { ProductsIcon, Rating } from "./components";
 
 export const product = defineType({
     name: 'products',
     title: 'Products',
     type: 'document',
-    icon: ShirtIcon,
+    icon: ProductsIcon,
     groups: [
         { name: 'analytics', title: 'Analytics' }
     ],

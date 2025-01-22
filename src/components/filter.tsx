@@ -24,7 +24,7 @@ const Filter = ({ showFilter }: FilterProps) => {
     const params = new URLSearchParams(searchParams.toString())
     params.set('category', value)
     router.push(pathname + '?' + params)
-  }, [searchParams])
+  }, [searchParams, pathname, router])
 
   return (
     <div className={cn("min-w-[12.5rem]", showFilter ? "block" : "hidden")}>

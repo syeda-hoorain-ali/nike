@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
 import { ICartProduct } from "@/types/data";
 import { Inter } from "next/font/google"
-import Image from "next/image";
 import Link from "next/link"
 import { toast } from "react-toastify";
 import { useShoppingCart } from "use-shopping-cart"

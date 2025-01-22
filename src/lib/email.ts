@@ -11,7 +11,7 @@ export const sendReceipt = async (params: ReceiptEmailParams) => {
         const response = await resend.emails.send({
             from: "onboarding@resend.dev",
             to: params.email,
-            subject: 'Message from your portfolio',
+            subject: "You order's is on its way.",
             react: ReceiptEmail({ ...params }),
         });
 

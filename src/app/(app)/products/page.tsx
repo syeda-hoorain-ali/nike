@@ -50,7 +50,7 @@ const Page = () => {
     const params = new URLSearchParams(searchParams.toString())
     params.set('sort', value)
     router.push(pathname + '?' + params)
-  }, [searchParams])
+  }, [searchParams, pathname, router])
 
   return (
     <main className="max-w-screen-xl mx-auto my-12">

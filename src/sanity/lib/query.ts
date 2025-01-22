@@ -1,5 +1,3 @@
-import { client } from "./client";
-
 interface QueryParams {
     category?: string | null;
     userQuery?: string | null;
@@ -87,11 +85,3 @@ export const singleProductQuery = `*[_type == "products" && _id == $id]{
     label,
     category -> { name } 
 }[0]`
-
-
-
-
-
-
-
-

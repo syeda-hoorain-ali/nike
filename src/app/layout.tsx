@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/layout/footer";
 import { ToastContainer } from 'react-toastify';
 import CartProvider from "@/components/layout/provider";
+import { ClerkProvider } from "@clerk/nextjs";
 
 // Helvetica Neue
 
@@ -53,9 +54,11 @@ export default function RootLayout({
         cz-shortcut-listen="true"
       >
         <CartProvider>
-          {children}
-          <ToastContainer autoClose={2000} />
-          <Footer />
+          <ClerkProvider>
+            {children}
+            <ToastContainer autoClose={2000} />
+            <Footer />
+          </ClerkProvider>
         </CartProvider>
       </body>
     </html>

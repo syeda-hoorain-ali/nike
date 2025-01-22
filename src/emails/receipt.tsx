@@ -14,31 +14,7 @@ import {
   Text,
 } from "@react-email/components";
 
-const baseUrl = process.env.BASE_URL ?? 'http://locahost:3000';
-
-const a = {
-  tracking_id: '1ZV218970300071628',
-  order_number: 'C0106373851',
-  username: 'Alan Turing',
-  address: '2125 Chestnut St, San Francisco, CA 94123',
-  created_at: new Date(2024, 11, 22),
-
-  products: [
-    {
-      image: '/images/products/shoes.png',
-      title: 'Nike branded shoes',
-      category: 'Men\'s shoes',
-      quantity: 4,
-      price: 100
-    }, {
-      image: '/images/products/shoes.png',
-      title: 'Nike branded shoes',
-      category: 'Men\'s shoes',
-      quantity: 4,
-      price: 100
-    }
-  ]
-}
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://locahost:3000';
 
 export interface ReceiptEmailProps {
   tracking_id: string;
@@ -95,9 +71,9 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
               alt="Nike"
               style={{ margin: "auto" }}
             />
-            <Heading style={global.heading}>It's On Its Way.</Heading>
+            <Heading style={global.heading}>It&apos;s On Its Way.</Heading>
             <Text style={global.text}>
-              You order's is on its way. Use the link above to track its progress.
+              You order&apos;s is on its way. Use the link above to track its progress.
             </Text>
             <Text style={{ ...global.text, marginTop: 24 }}>
               We´ve also charged your payment method for the cost of your order
@@ -269,7 +245,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
             <Row>
               <Text style={{ ...footer.text, paddingTop: 30, paddingBottom: 30 }}>
                 Please contact us if you have any questions. (If you reply to this
-                email, we won't be able to see it.)
+                email, we won&apos;t be able to see it.)
               </Text>
             </Row>
             <Row>
@@ -379,32 +355,6 @@ const adressTitle = {
   ...paragraph,
   fontSize: "15px",
   fontWeight: "bold",
-};
-
-const recomendationsText = {
-  margin: "0",
-  fontSize: "15px",
-  lineHeight: "1",
-  paddingLeft: "10px",
-  paddingRight: "10px",
-};
-
-const recomendations = {
-  container: {
-    padding: "20px 0",
-  },
-  product: {
-    verticalAlign: "top",
-    textAlign: "left" as const,
-    paddingLeft: "2px",
-    paddingRight: "2px",
-  },
-  title: { ...recomendationsText, paddingTop: "12px", fontWeight: "500" },
-  text: {
-    ...recomendationsText,
-    paddingTop: "4px",
-    color: "#747474",
-  },
 };
 
 const menu = {

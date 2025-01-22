@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { IProduct } from "@/types/data";
+import { ICartProduct, IProduct } from "@/types/data";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import ProductPageSkeleton from "@/components/skeletons/product-page";
@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { CartIcon } from "@/components/icons";
 import { useShoppingCart } from "use-shopping-cart";
 import { toast } from "react-toastify";
+import { singleProductQuery } from "@/sanity/lib/query";
 
 interface Props {
   params: Promise<{ id: string }>
@@ -24,24 +25,15 @@ const Page = ({ params }: Props) => {
 
   const [product, setProduct] = useState<IProduct | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const { addItem } = useShoppingCart();
-
+  const { addItem, cartDetails } = useShoppingCart();
+  const cart: ICartProduct[] = Object.values(cartDetails ?? {}) as ICartProduct[]
+  
   useEffect(() => {
-
+    
     const fetchProduct = async () => {
       setLoading(true)
       const { id } = await params;
-
-      const product = await client.fetch(`*[_type == "products" && _id == $id]{
-        "id": _id, 
-        "image": image.asset->url,
-        name,
-        price,
-        price_id,
-        label,
-        category -> { name } 
-      }[0]`, { id });
-
+      const product = await client.fetch(singleProductQuery, { id });
       setProduct(product);
       setLoading(false);
     }
@@ -51,7 +43,7 @@ const Page = ({ params }: Props) => {
 
   if (loading) return <ProductPageSkeleton />
   if (!product) notFound();
-
+  
   const cartProduct: Product = {
     price_id: product.price_id,
     name: product.name,
@@ -63,6 +55,27 @@ const Page = ({ params }: Props) => {
       colors: product.colors,
       size: product.size,
     },
+  }
+  
+  const addToCart = () => {
+    if (product.stock < 1) {
+      toast.error("Out of stock");
+      return;
+    }
+    
+    const item = cart.find(item => item.id === product.id)
+
+    if(item && item.quantity <= 10) {
+      toast.error("You cannot purchase more than 10 units of this product.");
+      return
+    }
+
+    addItem(cartProduct);
+    toast.success('Product added to cart!')
+    setProduct(prev => {
+      if (!prev) return null
+      return { ...prev, stock: prev.stock - 1 }
+    })
   }
 
   return (
@@ -84,10 +97,12 @@ const Page = ({ params }: Props) => {
           </p>
 
           <span className="block my-6 text-3xl lg:text-4xl">₹ {product.price}.00</span>
-          {/* <Link href='/cart'><Button size="lg"><CartIcon /> Add To Cart</Button></Link> */}
-          <Button
-            size="lg"
-            onClick={() => { addItem(cartProduct); toast.success('Product added to cart!') }}>
+
+          <span className="block my-2 font-semibold">
+            {product.stock == 0 ? 'Out of stock' : `${product.stock} pieces availabel`}
+          </span>
+
+          <Button size="lg" onClick={addToCart}>
             <CartIcon /> Add To Cart
           </Button>
 

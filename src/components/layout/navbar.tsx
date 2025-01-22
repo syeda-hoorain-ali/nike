@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link"
+import Form from "next/form"
 import { HeartIcon, Logo, SearchIcon, ShoppingBagIcon } from "../icons"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
@@ -8,28 +9,39 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import { MenuIcon } from "lucide-react"
 import { useShoppingCart } from "use-shopping-cart";
 import { cn } from "@/lib/utils";
+import { useSearchParams } from "next/navigation";
 
 const Navbar = () => {
-  const links = ['New & Featured', 'Men', 'Women', 'Kids', 'Sale', 'SNKRS'];
+
+  const searchParams = useSearchParams()
   const { cartCount } = useShoppingCart();
+  const links = [
+    { text: 'New & Featured', href: '/products?latest=true' },
+    { text: 'Men', href: '/products?category=men' },
+    { text: 'Women', href: '/products?category=women' },
+    { text: 'Kids', href: '/products?category=kids' },
+    { text: 'Sale', href: '/products' },
+    { text: 'SNKRS', href: '/products?query=shoes' }
+  ];
 
   return (
     <nav className="max-w-screen-xl mx-auto py-4 pl-4 md:px-8 lg:px-0 flex items-center justify-between">
       <Link href='/'><Logo /></Link>
 
       <ul className="hidden lg:flex gap-4 translate-x-1/4 font-semibold">
-        {links.map(text => (
+        {links.map(({ text, href }) => (
           <li key={text}>
-            <Link className="hover:underline underline-offset-2" href='/products'>{text}</Link>
+            <Link className="hover:underline underline-offset-2" href={href}>{text}</Link>
           </li>
         ))}
       </ul>
 
       <div className="flex gap-0 md:gap-2 items-center">
-        <div className="relative">
-          <Button variant="ghost" size="icon" className="lg:absolute top-0 left-0 rounded-full"><SearchIcon /></Button>
-          <Input className="hidden lg:block rounded-full bg-muted pl-8 w-44" placeholder="Search" />
-        </div>
+        <Form action="/products" className="relative">
+          <Button variant="ghost" size="icon" type="submit" className="lg:absolute top-0 left-0 rounded-full"><SearchIcon /></Button>
+
+          <Input name="query" className="hidden lg:block rounded-full bg-muted pl-8 w-44" placeholder="Search" defaultValue={searchParams.get('query') || undefined} />
+        </Form>
 
         <Button variant="ghost" size="icon" className="rounded-full">
           <Link className="hover:text-black" href='/cart'><HeartIcon /></Link>
@@ -50,9 +62,9 @@ const Navbar = () => {
 
           <SheetContent>
             <ul className="flex flex-col gap-4 mt-8 font-semibold">
-              {links.map(text => (
+              {links.map(({ text, href }) => (
                 <li key={text}>
-                  <Link className="hover:underline underline-offset-2" href='/products'>{text}</Link>
+                  <Link className="hover:underline underline-offset-2" href={href}>{text}</Link>
                 </li>
               ))}
             </ul>

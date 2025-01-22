@@ -1,15 +1,31 @@
+"use client";
+
 import Link from "next/link"
 import { Separator } from "./ui/separator"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
 import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
 import { cn } from "@/lib/utils";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 
 interface FilterProps {
   showFilter: boolean
 }
 
 const Filter = ({ showFilter }: FilterProps) => {
+
+  const searchParams = useSearchParams()
+  const pathname = usePathname()
+  const router = useRouter()
+
+  const handleGenderChange = useCallback((value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('category', value)
+    router.push(pathname + '?' + params)
+  }, [searchParams])
+
   return (
     <div className={cn("min-w-[12.5rem]", showFilter ? "block" : "hidden")}>
 
@@ -49,6 +65,20 @@ const Filter = ({ showFilter }: FilterProps) => {
         <AccordionItem value="item-1">
           <AccordionTrigger className="font-semibold">Gender</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-2">
+            <RadioGroup
+              defaultValue={searchParams.get('category') || undefined}
+              onValueChange={handleGenderChange}
+            >
+              <div className="flex gap-2">
+                <RadioGroupItem value="men" id="men" />
+                <Label htmlFor="men">Men</Label>
+              </div>
+              <div className="flex gap-2">
+                <RadioGroupItem value="women" id="women" />
+                <Label htmlFor="women">Women</Label>
+              </div>
+            </RadioGroup>
+
             <div className="flex gap-2"><Checkbox id="men" /><Label htmlFor="men">Men</Label></div>
             <div className="flex gap-2"><Checkbox id="women" /><Label htmlFor="women">Women</Label></div>
             <div className="flex gap-2"><Checkbox id="unisex" /><Label htmlFor="unisex">Unisex</Label></div>

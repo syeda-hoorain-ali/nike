@@ -7,6 +7,7 @@ import { ICartProduct } from "@/types/data";
 import { Inter } from "next/font/google"
 import Image from "next/image";
 import Link from "next/link"
+import { toast } from "react-toastify";
 import { useShoppingCart } from "use-shopping-cart"
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,6 +23,7 @@ const Page = () => {
       console.log(response);
 
     } catch (error) {
+      toast.error((error as Error).stack);
       console.error((error as Error).stack);
       console.error(error);
     }
@@ -43,8 +45,7 @@ const Page = () => {
 
         <div className="flex flex-col">
           {cartCount === 0 && (
-            <div className="flex flex-col items-center justify-center gap-4 p-4 md:p-8 lg:p-0">
-              <Image src="/images/empty-cart.svg" alt="Empty Cart" width={400} height={200} className="w-1/2" />
+            <div className="flex flex-col items-center justify-center gap-4 py-12 p-4 md:p-8 lg:py-12">
               <p className="text-lg text-center">
                 Your cart is empty. {' '}
                 <Link href="/products" className="text-blue-600 underline underline-offset-2 hover:no-underline transition-all">Start shopping</Link>
@@ -77,16 +78,7 @@ const Page = () => {
             price={3895}
             quantity={1}
           />
-
-          <CartProduct
-            name="Nike Air Max 97 SE"
-            category="Men's Shoes"
-            colors="Flat Pewter/Light Bone/Black/White"
-            image="/images/product/nike-air-max-97-se.png"
-            size="8"
-            price={16995}
-            quantity={1}
-          /> */}
+         */}
 
         </div>
 
@@ -111,7 +103,7 @@ const Page = () => {
 
           <div className="flex justify-between items-center">
             <span>Total</span>
-            <span>₹ 20 890.00</span>
+            <span>₹ {totalPrice}.00</span>
           </div>
 
           <Separator className="my-2" />

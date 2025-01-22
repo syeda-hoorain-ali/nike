@@ -4,6 +4,8 @@ import { Button } from './ui/button'
 import { HeartIcon, TrashIcon } from './icons'
 import Image from 'next/image'
 import { useShoppingCart } from 'use-shopping-cart';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { toast } from 'react-toastify';
 
 interface CartProductProps {
   id: string;
@@ -18,9 +20,9 @@ interface CartProductProps {
 
 const CartProduct = ({ id, image, name, category, colors, price, size, quantity }: CartProductProps) => {
 
-  const { removeItem } = useShoppingCart()
+  const { removeItem, setItemQuantity } = useShoppingCart()
   console.log(colors);
-  
+
 
   return (
     <div className="flex flex-col md:flex-row gap-4 pt-4 pb-8 px-8 lg:px-0 border-b border-[#e5e5e5]">
@@ -39,12 +41,32 @@ const CartProduct = ({ id, image, name, category, colors, price, size, quantity 
 
             <div className="flex gap-6">
               <span className="text-[#757575]">Size {size}</span>
-              <span className="text-[#757575]">Quantity {quantity}</span>
+
+              <span className="text-[#757575] inline-flex gap-2">
+                Quantity
+
+                <Select
+                  defaultValue={quantity.toString()}
+                  onValueChange={v => setItemQuantity(id, parseInt(v))}
+                >
+                  <SelectTrigger className="w-10 px-1 h-6 text-base border-none shadow-none">
+                    <SelectValue placeholder="0" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Array.from({ length: 10 }).map((_, i) => (
+                      <SelectItem value={(i + 1).toString()} key={i}>{i + 1}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </span>
             </div>
 
             <div className="mt-4 flex h-5">
               <Button variant="ghost" size="icon"><HeartIcon /></Button>
-              <Button variant="ghost" size="icon" onClick={() => removeItem(id) }><TrashIcon /></Button>
+              <Button variant="ghost" size="icon"
+                onClick={() => { removeItem(id); toast.success('Product removed from cart') }}>
+                <TrashIcon />
+              </Button>
             </div>
 
           </div>

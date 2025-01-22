@@ -1,7 +1,7 @@
 import { CartEntry } from "use-shopping-cart/core";
 
 export interface IProduct {
-    id: number;
+    id: string;
     name: string;
     image: string;
     category: { name: string };
@@ -10,6 +10,7 @@ export interface IProduct {
     colors: string[];
     label: string;
     size: string[];
+    stock: number;
 }
 
 export interface ICartProduct extends CartEntry {
@@ -17,4 +18,12 @@ export interface ICartProduct extends CartEntry {
         colors: string[];
         sizes: string[];
     }
+}
+
+export interface SearchParams {
+    category?: string | null;
+    query?: string | null;
+    sort?: string | null;
+    latest?: boolean | null;
+    price?: string | null; // Format: '2000-40000'
 }

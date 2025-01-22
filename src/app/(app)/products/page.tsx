@@ -5,37 +5,52 @@ import Filter from "@/components/filter"
 import { FilterIcon } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { IProduct } from "@/types/data";
+import { IProduct, SearchParams } from "@/types/data";
 import { client } from "@/sanity/lib/client";
 import CardSkeleton from "@/components/skeletons/card";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { generateGroqQuery } from "@/sanity/lib/query";
 
 const Page = () => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [showFilter, setShowFilter] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [params, setParams] = useState<SearchParams>({})
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const pathname = usePathname()
 
   useEffect(() => {
+    setParams({
+      category: searchParams.get('category'),
+      query: searchParams.get('query'),
+      sort: searchParams.get('sort'),
+      price: searchParams.get('price'),
+      latest: Boolean(searchParams.get('latest')),
+    })
+  }, [searchParams])
+
+  useEffect(() => {
+
     const fetchProducts = async () => {
 
       setIsLoading(true);
-      const products: IProduct[] = await client.fetch(`*[_type == "products"]{
-        "id": _id, 
-        "image": image.asset->url,
-        name,
-        price,
-        label,
-        colors,
-        category -> { name }
-      }`);
+      const products: IProduct[] = await client.fetch(generateGroqQuery({ ...params, userQuery: params.query }));
       setProducts(products);
       setIsLoading(false);
     }
 
     fetchProducts()
-  }, [])
+  }, [params])
+
+  const handleOrderChange = useCallback((value: string) => {
+    const params = new URLSearchParams(searchParams.toString())
+    params.set('sort', value)
+    router.push(pathname + '?' + params)
+  }, [searchParams])
 
   return (
     <main className="max-w-screen-xl mx-auto my-12">
@@ -63,13 +78,13 @@ const Page = () => {
           </Sheet>
 
 
-          <Select>
+          <Select defaultValue={params.sort || undefined} onValueChange={handleOrderChange}>
             <SelectTrigger>
               <SelectValue placeholder="Sort By" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="price">Price</SelectItem>
-              <SelectItem value="date">Date</SelectItem>
+              <SelectItem value="asc">Low to high</SelectItem>
+              <SelectItem value="desc">High to low</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -82,20 +97,31 @@ const Page = () => {
         </div>
 
 
-        <div className="flex flex-wrap gap-4 px-4 md:px-8 lg:px-0">
-          {isLoading ?
-            <>
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-            </> :
+        <div className="w-full h-full">
+          {params.query && <p className="mb-2">Showing results for {params.query}</p>}
 
-            products.map(item => <Card key={item.id} {...item} />)
-          }
+          <div className="w-full h-full flex flex-wrap gap-4 px-4 md:px-8 lg:px-0">
+            {isLoading ?
+              <>
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+                <CardSkeleton />
+              </> :
+
+              products.length === 0 ?
+                <div className="w-full flex flex-col items-center justify-center my-40">
+                  <h2 className="text-xl font-semibold">No products found</h2>
+                  <p className="text-lg">Try removing some filters</p>
+                </div> :
+                products.map(item => <Card key={item.id} {...item} />)
+            }
+          </div>
         </div>
+
+
 
         {/* <Card
           id={5}

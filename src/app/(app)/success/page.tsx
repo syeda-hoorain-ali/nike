@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const page = () => {
   return (
@@ -8,7 +9,9 @@ const page = () => {
 
       <p className="max-w-xl text-center">Thank you for your purchase! Your transaction was successfully completed. We’re excited to have you onboard, and you can now enjoy our services seamlessly. Let us know if there’s anything we can do to enhance your experience!</p>
 
-      <Button size="lg">Track your package</Button>
+      <Link href="/tracking">
+        <Button size="lg">Track your package</Button>
+      </Link>
 
     </div>
   )

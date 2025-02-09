@@ -3,7 +3,6 @@
 import Link from "next/link"
 import { Separator } from "./ui/separator"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion"
-import { Checkbox } from "./ui/checkbox"
 import { Label } from "./ui/label"
 import { cn } from "@/lib/utils";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group"
@@ -20,11 +19,12 @@ const Filter = ({ showFilter }: FilterProps) => {
   const pathname = usePathname()
   const router = useRouter()
 
-  const handleGenderChange = useCallback((value: string) => {
+  const handleChange = useCallback((name: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString())
-    params.set('category', value)
+    params.set(name, value)
     router.push(pathname + '?' + params)
   }, [searchParams, pathname, router])
+
 
   return (
     <div className={cn("min-w-[12.5rem]", showFilter ? "block" : "hidden")}>
@@ -67,7 +67,7 @@ const Filter = ({ showFilter }: FilterProps) => {
           <AccordionContent className="flex flex-col gap-2">
             <RadioGroup
               defaultValue={searchParams.get('category') || undefined}
-              onValueChange={handleGenderChange}
+              onValueChange={v => handleChange('category', v)}
             >
               <div className="flex gap-2">
                 <RadioGroupItem value="men" id="men" />
@@ -79,25 +79,45 @@ const Filter = ({ showFilter }: FilterProps) => {
               </div>
             </RadioGroup>
 
-            <div className="flex gap-2"><Checkbox id="men" /><Label htmlFor="men">Men</Label></div>
-            <div className="flex gap-2"><Checkbox id="women" /><Label htmlFor="women">Women</Label></div>
-            <div className="flex gap-2"><Checkbox id="unisex" /><Label htmlFor="unisex">Unisex</Label></div>
+            {/* <div className="flex gap-2"><Checkbox id="unisex" /><Label htmlFor="unisex">Unisex</Label></div> */}
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-2">
           <AccordionTrigger className="font-semibold">Kids</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-2">
-            <div className="flex gap-2"><Checkbox id="boys" /><Label htmlFor="boys">Boys</Label></div>
-            <div className="flex gap-2"><Checkbox id="girls" /><Label htmlFor="girls">Girls</Label></div>
+            <RadioGroup
+              defaultValue={searchParams.get('category') || undefined}
+              onValueChange={v => handleChange('category', v)}
+            >
+              <div className="flex gap-2">
+                <RadioGroupItem value="kids" id="boys" />
+                <Label htmlFor="boys">Boys</Label>
+              </div>
+              <div className="flex gap-2">
+                <RadioGroupItem value="kids" id="girls" />
+                <Label htmlFor="girls">Girls</Label>
+              </div>
+            </RadioGroup>
           </AccordionContent>
         </AccordionItem>
 
         <AccordionItem value="item-3">
           <AccordionTrigger className="font-semibold">Shop By Price</AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-2">
-            <div className="flex gap-2"><Checkbox id="low" /><Label htmlFor="low">Under ₹ 2 500.00</Label></div>
-            <div className="flex gap-2"><Checkbox id="high" /><Label htmlFor="high">₹ 2 501.00 - ₹ 7 500.00</Label></div>
+          <AccordionContent>
+            <RadioGroup
+              defaultValue={searchParams.get('price') || undefined}
+              onValueChange={v => handleChange('price', v)}
+            >
+              <div className="flex gap-2">
+                <RadioGroupItem value="0-2500" id="2500" />
+                <Label htmlFor="2500">Under ₹ 2 500.00</Label>
+              </div>
+              <div className="flex gap-2">
+                <RadioGroupItem value="2501-7500" id="7500" />
+                <Label htmlFor="7500">₹ 2 501.00 - ₹ 7 500.00</Label>
+              </div>
+            </RadioGroup>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

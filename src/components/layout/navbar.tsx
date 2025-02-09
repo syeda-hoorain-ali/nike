@@ -25,7 +25,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="max-w-screen-xl mx-auto py-4 pl-4 md:px-8 lg:px-0 flex items-center justify-between">
+    <nav className="max-w-screen-xl w-full mx-auto py-4 pl-4 md:px-8 lg:px-0 flex items-center justify-between">
       <Link href='/'><Logo /></Link>
 
       <ul className="hidden lg:flex gap-4 translate-x-1/4 font-semibold">

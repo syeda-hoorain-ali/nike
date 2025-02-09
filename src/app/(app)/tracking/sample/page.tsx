@@ -64,14 +64,10 @@ const Page = () => {
         </div>
 
         {error && (
-          <p className="text-destructive text-sm px-2 py-1">{error}</p>
+          <p className="text-destructive text-sm px-2 py-1">{error} a</p>
         )}
       </form>
 
-      {/* <p className="text-center text-sm text-warning">
-        This page is not functional in test mode. To see how it works, please visit the sample page
-        <Link href="/tracking/sample">here</Link>.
-      </p> */}
 
     </div>
   );

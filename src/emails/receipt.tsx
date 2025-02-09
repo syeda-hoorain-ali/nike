@@ -21,7 +21,7 @@ export interface ReceiptEmailProps {
   address: string;
   name: string;
   order_number: string;
-  username: string;
+  label: string;
   created_at: Date;
 
   products: {
@@ -56,7 +56,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
                 <Text style={track.number}>{props.tracking_id}</Text>
               </Column>
               <Column align="right">
-                <Link style={global.button}>Track Package</Link>
+                <Link style={global.button} href={`${baseUrl}/tracking`}>Track Package</Link>
               </Column>
             </Row>
           </Section>
@@ -65,7 +65,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
 
           <Section style={message}>
             <Img
-              src={`${baseUrl}/static/nike-logo.png`}
+              src={`${baseUrl}/images/nike-logo.png`}
               width="66"
               height="22"
               alt="Nike"
@@ -85,7 +85,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
           <Hr style={global.hr} />
 
           <Section style={global.defaultPadding}>
-            <Text style={adressTitle}>Shipping to: {props.username}</Text>
+            <Text style={adressTitle}>Shipping to: {props.name}</Text>
             <Text style={{ ...global.text, fontSize: 14 }}>{props.address}</Text>
           </Section>
 
@@ -129,7 +129,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
             </Row>
             <Row>
               <Column align="center">
-                <Link style={global.button}>Order Status</Link>
+                <Link style={global.button} href={props.label}>Download Label</Link>
               </Column>
             </Row>
           </Section>
@@ -175,7 +175,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
                 <Row>
                   <Column style={{ width: "16px" }}>
                     <Img
-                      src={`${baseUrl}/static/nike-phone.png`}
+                      src={`${baseUrl}/imges/nike-phone.png`}
                       width="16px"
                       height="26px"
                       style={{ paddingRight: "14px" }}
@@ -209,23 +209,23 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
             </Row>
             <Row style={categories.container}>
               <Column align="center">
-                <Link href="/" style={categories.text}>
+                <Link href={`${baseUrl}/products?category=men`} style={categories.text}>
                   Men
                 </Link>
               </Column>
               <Column align="center">
-                <Link href="/" style={categories.text}>
+                <Link href={`${baseUrl}/products?category=women`} style={categories.text}>
                   Women
                 </Link>
               </Column>
               <Column align="center">
-                <Link href="/" style={categories.text}>
+                <Link href={`${baseUrl}/products?category=kids`} style={categories.text}>
                   Kids
                 </Link>
               </Column>
               <Column align="center">
-                <Link href="/" style={categories.text}>
-                  Customize
+                <Link href={`${baseUrl}/products?category=shoes`} style={categories.text}>
+                  Shoes
                 </Link>
               </Column>
             </Row>

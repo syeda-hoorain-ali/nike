@@ -1,4 +1,7 @@
 import { CartEntry } from "use-shopping-cart/core";
+import { addressSchema } from "@/schema/addressSchema";
+import { z } from "zod";
+
 
 export interface IProduct {
     id: string;
@@ -17,6 +20,7 @@ export interface ICartProduct extends CartEntry {
     product_data?: {
         colors: string[];
         sizes: string[];
+        product_id: string;
     }
 }
 
@@ -26,4 +30,32 @@ export interface SearchParams {
     sort?: string | null;
     latest?: boolean | null;
     price?: string | null; // Format: '2000-40000'
+}
+
+export interface IPlace {
+    display_name: string;
+    address: {
+        village?: string;
+        town?: string;
+        city?: string;
+        state: string;
+        "ISO3166-2-lvl4": string;
+        postcode: string;
+        country: string;
+        country_code: string;
+    }
+}
+
+export interface RatesParams {
+    address: z.infer<typeof addressSchema>,
+    products: {
+        name: string;
+        quantity: number;
+        price: number;
+    }[]
+}
+
+export interface ICountry {
+    name: string,
+    code: string
 }

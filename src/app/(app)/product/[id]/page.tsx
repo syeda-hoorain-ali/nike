@@ -49,11 +49,12 @@ const Page = ({ params }: Props) => {
     name: product.name,
     description: product.category.name,
     image: product.image,
-    price: product.price,
+    price: product.price * 100,
     currency: 'INR',
     product_data: {
       colors: product.colors,
       size: product.size,
+      product_id: product.id
     },
   }
   

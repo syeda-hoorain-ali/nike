@@ -21,8 +21,6 @@ interface CartProductProps {
 const CartProduct = ({ id, image, name, category, colors, price, size, quantity }: CartProductProps) => {
 
   const { removeItem, setItemQuantity } = useShoppingCart()
-  console.log(colors);
-
 
   return (
     <div className="flex flex-col md:flex-row gap-4 pt-4 pb-8 px-8 lg:px-0 border-b border-[#e5e5e5]">
@@ -37,7 +35,7 @@ const CartProduct = ({ id, image, name, category, colors, price, size, quantity 
           <div className="flex flex-col gap-1">
             <h5 className="font-semibold">{name}</h5>
             <p className="text-[#757575]">{category}</p>
-            {/* <p className="text-[#757575]">{colors.join('/')}</p> */}
+            <p className="text-[#757575]">{colors.join('/')}</p>
 
             <div className="flex gap-6">
               <span className="text-[#757575]">Size {size}</span>

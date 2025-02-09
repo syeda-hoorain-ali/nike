@@ -4,7 +4,7 @@ import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook'
 import { NextRequest, NextResponse } from 'next/server';
 
 if (!process.env.SANITY_WEBHOOK_SECRET) {
-    throw new Error('Envoirement variables are not set');
+    throw new Error('Missing environment variable: SANITY_WEBHOOK_SECRET');
 }
 const secret = process.env.SANITY_WEBHOOK_SECRET
 

@@ -85,3 +85,15 @@ export const singleProductQuery = `*[_type == "products" && _id == $id]{
     label,
     category -> { name } 
 }[0]`
+
+export const productImage = `*[_type == "products" && _id == $id]{
+    "image": image.asset->url,
+}[0]`
+
+export const trackingQuery = `*[_type == "orders" && shipping.trackingId == $trackingNumber]{
+    "carrierCode": shipping.carrierCode,
+    "trackingNumber": shipping.trackingId
+}[0]`
+
+
+

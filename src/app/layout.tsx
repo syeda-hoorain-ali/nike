@@ -3,8 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/layout/footer";
 import { ToastContainer } from 'react-toastify';
-import CartProvider from "@/components/layout/provider";
-import { ClerkProvider } from "@clerk/nextjs";
+import Providers from "@/components/layout/providers";
 
 // Helvetica Neue
 
@@ -53,13 +52,11 @@ export default function RootLayout({
         antialiased overflow-x-hidden`}
         cz-shortcut-listen="true"
       >
-        <CartProvider>
-          <ClerkProvider>
-            {children}
-            <ToastContainer autoClose={2000} />
-            <Footer />
-          </ClerkProvider>
-        </CartProvider>
+        <Providers>
+          {children}
+          <ToastContainer autoClose={2000} />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

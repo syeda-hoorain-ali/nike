@@ -6,27 +6,15 @@ import { Separator } from "@/components/ui/separator"
 import { ICartProduct } from "@/types/data";
 import { Inter } from "next/font/google"
 import Link from "next/link"
-import { toast } from "react-toastify";
 import { useShoppingCart } from "use-shopping-cart"
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Page = () => {
 
-  const { cartCount, cartDetails, totalPrice, redirectToCheckout } = useShoppingCart()
+  const { cartCount, cartDetails, formattedTotalPrice } = useShoppingCart()
   const cart: ICartProduct[] = Object.values(cartDetails ?? {}) as ICartProduct[]
 
-  const handleCheckout = async () => {
-    try {
-      const response = await redirectToCheckout()
-      console.log(response);
-
-    } catch (error) {
-      toast.error((error as Error).stack);
-      console.error((error as Error).stack);
-      console.error(error);
-    }
-  }
 
   return (
     <main className="max-w-screen-lg mx-auto my-4 grid gap-8 grid-cols-1 lg:grid-cols-[2fr_1fr]">
@@ -89,28 +77,27 @@ const Page = () => {
         <div className="flex flex-col gap-3 text-md">
           <div className="flex justify-between items-center">
             <span>Subtotal</span>
-            <span>₹ {totalPrice}.00</span>
-            {/* <span>{formattedTotalPrice || '₹0.00'}</span> */}
+            <span>{formattedTotalPrice || '₹0.00'}</span>
           </div>
 
           <div className="flex justify-between items-center">
-            <span>Estimated Delivery & Handling</span>
-            <span>Free</span>
+            <span>Estimated Delivery</span>
+            <span>(calculated at checkout)</span>
           </div>
 
           <Separator className="my-2" />
 
           <div className="flex justify-between items-center">
             <span>Total</span>
-            <span>₹ {totalPrice}.00</span>
+            <span>{formattedTotalPrice || '₹0.00'}</span>
           </div>
 
           <Separator className="my-2" />
         </div>
 
-        {/* <Link href='/checkout'> */}
-        <Button className="h-10" disabled={cartCount === 0} onClick={handleCheckout}>Member Checkout</Button>
-        {/* </Link> */}
+        <Link href='/checkout'>
+          <Button className="h-10" disabled={cartCount === 0}>Member Checkout</Button>
+        </Link>
 
       </div>
     </main>

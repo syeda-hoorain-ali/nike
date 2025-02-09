@@ -59,6 +59,11 @@ const Page = () => {
         <h3 className="text-xl md:text-2xl font-semibold">New (500)</h3>
 
         <div className="flex items-center gap-2">
+          <Button variant="ghost" className="flex lg:hidden">
+            <span className="hidden md:inline">Remove Filters</span>
+            <FilterIcon />
+          </Button>
+
           <Button variant="ghost" onClick={() => setShowFilter(v => !v)} className="hidden lg:flex">
             {showFilter ? "Hide Filters" : "Show Filters"}
             <FilterIcon />

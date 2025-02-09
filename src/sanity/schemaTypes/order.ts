@@ -59,39 +59,9 @@ export const order = defineType({
             group: "products",
             of: [
                 defineField({
-                    name: 'product',
-                    type: "object",
-                    fields: [
-                        defineField({
-                            name: "productId",
-                            title: "Product ID",
-                            type: "string",
-                            description: "ID of the purchased product",
-                            validation: Rule => Rule.required(),
-                        }),
-                        defineField({
-                            name: "name",
-                            title: "Product Name",
-                            type: "string",
-                            description: "Name of the product",
-                            validation: Rule => Rule.required(),
-                        }),
-                        defineField({
-                            name: "quantity",
-                            title: "Quantity",
-                            type: "number",
-                            description: "Quantity purchased",
-                            validation: Rule => Rule.required().min(1),
-                        }),
-                        defineField({
-                            name: "price",
-                            title: "Price",
-                            type: "number",
-                            description: "Price per unit of the product",
-                            validation: Rule => Rule.required().min(0),
-                        }),
-                    ],
-                }),
+                    name: 'orderProduct',
+                    type: 'orderProduct',
+                })
             ],
         }),
 
@@ -102,19 +72,6 @@ export const order = defineType({
             group: "order-details",
             description: "Total amount paid for the order",
             validation: Rule => Rule.required().min(0),
-        }),
-
-        defineField({
-            name: "paymentStatus",
-            title: "Payment Status",
-            type: "string",
-            group: "order-details",
-            options: {
-                list: ["pending", "completed", "failed"],
-                layout: "radio"
-            },
-            description: "Status of the payment",
-            validation: Rule => Rule.required(),
         }),
 
         defineField({
@@ -147,6 +104,12 @@ export const order = defineType({
                     type: "string",
                 }),
                 defineField({
+                    name: "pan",
+                    title: "PAN",
+                    type: "string",
+                    validation: Rule => Rule.required(),
+                }),
+                defineField({
                     name: "postalCode",
                     title: "Postal Code",
                     type: "string",
@@ -166,6 +129,13 @@ export const order = defineType({
                     validation: Rule => Rule.required().min(0),
                 }),
                 defineField({
+                    name: "carrierCode",
+                    title: "Carrier Code",
+                    type: "number",
+                    description: "Shipping carrier code",
+                    validation: Rule => Rule.required().min(0),
+                }),
+                defineField({
                     name: "trackingId",
                     title: "Tracking ID",
                     type: "string",
@@ -173,7 +143,7 @@ export const order = defineType({
                 }),
             ],
         }),
-        
+
         defineField({
             name: "createdAt",
             title: "Created At",
@@ -182,5 +152,24 @@ export const order = defineType({
             description: "Order creation timestamp",
             validation: Rule => Rule.required(),
         })
-    ]
+    ],
+
+    preview: {
+        select: {
+            username: 'username',
+            products: 'products',
+        },
+        prepare(selection) {
+            const { username, products } = selection
+            const totalProducts: number = products.reduce(
+                (total: number, item: { quantity: number }) => total + item.quantity,
+                0)
+
+            console.log(products)
+            return {
+                title: `${username}'s Order`,
+                subtitle: `${totalProducts} product(s)`
+            }
+        }
+    },
 });

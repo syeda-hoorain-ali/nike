@@ -1,9 +1,9 @@
 Test Case ID,Feature,Title,Description,Preconditions,Test Steps,Expected Result,Actual Result,Status (Pass/Fail),Comments
 TC_001,Product Listing,Display all products,Ensure all products are displayed on the home page,None,Open the home page and check product list,All products should be visible,Products are visible,Pass,
 TC_002,Product Details,View product details,Verify clicking on a product shows details,Products must exist in the database,Click on a product,Product details page should open with correct info,Correct details shown,Pass,
-TC_003,Cart Management,Add to cart,Check if users can add products to cart,Product must be available,Click "Add to Cart" on a product,Product should appear in cart with correct quantity,Product added successfully,Pass,
+TC_003,Cart Management,Add to cart,Check if users can add products to cart,Product must be available,"Click ""Add to Cart"" on a product",Product should appear in cart with correct quantity,Product added successfully,Pass,
 TC_004,Cart Management,Update cart quantity,Check if users can update product quantity,Product must be in cart,Increase/decrease quantity in cart,Quantity should update correctly,Quantity updated,Pass,
-TC_005,Cart Management,Remove from cart,Check if users can remove a product from cart,Product must be in cart,Click "Remove" button,Product should be removed from cart,Product removed,Pass,
+TC_005,Cart Management,Remove from cart,Check if users can remove a product from cart,Product must be in cart,"Click ""Remove"" button",Product should be removed from cart,Product removed,Pass,
 TC_006,Checkout,Get address from user,Ensure user can enter and save their address,None,Enter a valid address and proceed,Address should be saved correctly,Address saved,Pass,
 TC_007,Checkout,Fetch rates from address,Verify API returns correct shipping rates,User must enter a valid address,Enter address and fetch rates,Shipping rates should be displayed,Error fetching rates,Fail,Issue with shipping API
 TC_008,Checkout,Stripe Payment form,Verify Stripe payment form loads correctly,Cart must have products and shipping selected,Open payment page and check form,Payment form should be visible,Form displayed correctly,Pass,

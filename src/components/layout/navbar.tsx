@@ -20,6 +20,7 @@ const Navbar = () => {
     { text: 'Men', href: '/products?category=men' },
     { text: 'Women', href: '/products?category=women' },
     { text: 'Kids', href: '/products?category=kids' },
+    { text: 'About', href: '/about' },
     { text: 'Sale', href: '/products' },
     { text: 'SNKRS', href: '/products?query=shoes' }
   ];

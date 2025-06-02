@@ -25,3 +25,12 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npx tsx scripts/commit-push.ts"
+
+[[workflows.workflow]]
+name = "Setup Git Config"
+author = 41949365
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsx scripts/setup-git.ts"

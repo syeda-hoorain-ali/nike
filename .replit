@@ -15,11 +15,10 @@ externalPort = 80
 ignoredPaths = [".env"]
 
 [workflows]
-runButton = "Push Code on GitHub"
+runButton = "Preview your app"
 
 [[workflows.workflow]]
 name = "Push Code on GitHub"
-author = 41949365
 mode = "sequential"
 
 [[workflows.workflow.tasks]]
@@ -28,9 +27,17 @@ args = "npx tsx scripts/commit-push.ts"
 
 [[workflows.workflow]]
 name = "Setup Git Config"
-author = 41949365
 mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "npx tsx scripts/setup-git.ts"
+
+[[workflows.workflow]]
+name = "Preview your app"
+author = 41949365
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"

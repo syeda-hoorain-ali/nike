@@ -26,8 +26,12 @@ async function commitAndPush(commitMessage?: string) {
     await git.push("origin", "main"); 
 
     console.log(`✅ Committed and pushed: ${message}`);
-  } catch (error) {
-    console.error("❌ Error during commit/push:", error);
+  } catch (error: any) {
+    if (error.message.includes('Author identity unknown')) {
+      console.error("❌ Git configuration error. Please run `Setup Git Config` using the top run button.");
+    } else {
+      console.error("❌ Error during commit/push:", error);
+    }
     process.exit(1);
   }
 }

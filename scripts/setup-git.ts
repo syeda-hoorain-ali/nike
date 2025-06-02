@@ -1,4 +1,3 @@
-
 // setup-git.ts
 import { createInterface } from 'readline';
 import { execSync } from 'child_process';
@@ -45,11 +44,11 @@ async function setupGitConfig() {
     console.log('\nYour Git config:');
     
     // Display current config
-    const configEmail = execSync('git config --global user.email', { encoding: 'utf8' }).trim();
-    const configName = execSync('git config --global user.name', { encoding: 'utf8' }).trim();
+    // const configEmail = execSync('git config --global user.email', { encoding: 'utf8' }).trim();
+    // const configName = execSync('git config --global user.name', { encoding: 'utf8' }).trim();
     
-    console.log(`  Email: ${configEmail}`);
-    console.log(`  Name: ${configName}`);
+    // console.log(`  Email: ${configEmail}`);
+    // console.log(`  Name: ${configName}`);
     
   } catch (error) {
     console.error('❌ Error setting up Git configuration:', error);

@@ -11,9 +11,17 @@ run = ["sh", "-c", "npm run dev"]
 localPort = 3000
 externalPort = 80
 
-[[ports]]
-localPort = 3001
-externalPort = 3001
+[packager]
+ignoredPaths = [".env"]
 
-[[ports]]
-localPort = 3002
+[workflows]
+runButton = "Push Code on GitHub"
+
+[[workflows.workflow]]
+name = "Push Code on GitHub"
+author = 41949365
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npx tsx scripts/commit-push.ts"

@@ -50,6 +50,7 @@
     "sanity": "^2.36.6",
     "shipengine": "^1.0.7",
     "shippo": "^2.14.1",
+    "simple-git": "^3.27.0",
     "stripe": "^17.5.0",
     "styled-components": "^6.1.13",
     "tailwind-merge": "^2.5.5",

@@ -341,8 +341,8 @@ const AddressForm = () => {
                 </FormControl>
                 <FormLabel className="text-xs text-[#757575]">
                   I have read and consent to eShopWorld processing my information in accordance with the {' '}
-                  <Link href='/contact-us' className="underline underline-offset-2">Privacy Statement</Link>{' '}and{' '}
-                  <Link href='/contact-us' className="underline underline-offset-2">Cookie Policy</Link>.
+                  <Link href='/privacy-policy' className="underline underline-offset-2">Privacy Statement</Link>{' '}and{' '}
+                  <Link href='/privacy-policy' className="underline underline-offset-2">Cookie Policy</Link>.
                   eShopWorld is a trusted Nike partner.
                 </FormLabel>
               </div>

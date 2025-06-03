@@ -140,7 +140,7 @@ const Page = () => {
 
         <p className="text-[#8d8d8d] text-sm text-center">
           By logging in, you agree to Nike&apos;s {' '}
-          <Link className="underline hover:text-black transition" href='/contact-us'>Privacy Policy</Link> and {' '}
+          <Link className="underline hover:text-black transition" href='/privacy-policy'>Privacy Policy</Link> and {' '}
           <Link className="underline hover:text-black transition" href='/contact-us'>Terms of Use</Link>.
         </p>
 

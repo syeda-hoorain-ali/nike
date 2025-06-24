@@ -92,7 +92,7 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
           <Hr style={global.hr} />
 
           <Section
-            style={{ ...paddingX, paddingTop: "40px", paddingBottom: "40px", gap: "10px" }}>
+            style={{ padding: "40px", gap: "20px", display: "flex", flexDirection: "row" }}>
 
             {props.products.map((product, i) => (
               <Row key={i}>
@@ -100,8 +100,8 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
                   <Img
                     src={product.image}
                     alt={product.name}
-                    style={{ float: "left" }}
-                    width="260px"
+                    style={{ float: "left", borderRadius: "5px" }}
+                    width="200px"
                   />
                 </Column>
                 <Column style={{ verticalAlign: "top", paddingLeft: "12px" }}>
@@ -109,6 +109,9 @@ export const ReceiptEmail = (props: ReceiptEmailProps) => {
                     {product.name}
                   </Text>
                   <Text style={global.text}>Quantity: {product.quantity}</Text>
+                  <Text style={global.text}>Category: {product.category}</Text>
+                  <Text style={global.text}>Price per piece: {product.price}</Text>
+                  <Text style={global.text}>Total price: {product.quantity * product.price}</Text>
                 </Column>
               </Row>
             ))}

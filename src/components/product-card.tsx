@@ -18,7 +18,7 @@ const ProductCard = ({ id, image, name, price, category, size }: ProductCardProp
   return (
     <div style={{ width: px }} className="max-w-full px-4">
       <Link href={`/product/${id}`} className="relative block w-full aspect-square">
-        <Image className="rounded" src={image} alt={name} fill />
+        <Image className="rounded" src={image} alt={name} width={px} height={px} />
       </Link>
 
       <div className={cn("flex justify-between mt-5", size === 'sm' ? 'pr-2' : 'pr-4')}>

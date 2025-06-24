@@ -27,7 +27,7 @@ export const POST = async (request: NextRequest) => {
                     quantity: product.quantity,
                     countryOfOrigin: address.country,
                     weight: {
-                        value: Math.random() * 3, // later i will also add this field in sanity
+                        value: Math.random() * 3, // TODO: later i will also add this field in sanity
                         unit: 'ounce'
                     },
                     value: {

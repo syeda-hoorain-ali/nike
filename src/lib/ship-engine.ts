@@ -37,12 +37,7 @@ export const getRates = async (address: ShippingAddress, products: ShippingProdu
                     countryCode: "US",
                     addressResidentialIndicator: "no",
                 },
-                packages: [{
-                    weight: {
-                        value: 1.0,
-                        unit: 'ounce'
-                    }
-                }],
+                packages: products.map(p => ({ weight: p.weight })),
                 customs: {
                     nonDelivery: 'return_to_sender',
                     contents: 'merchandise',
@@ -50,7 +45,7 @@ export const getRates = async (address: ShippingAddress, products: ShippingProdu
                 }
             }
         })
-        console.log(response.rateResponse)
+        console.log('Shipengine response: ', response.rateResponse)
 
         return response.rateResponse.rates || []
 

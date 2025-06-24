@@ -1,11 +1,19 @@
-import ProductCard from "@/components/product-card"
-import { Button } from "@/components/ui/button"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import { client } from "@/sanity/lib/client"
-import { generateGroqQuery } from "@/sanity/lib/query"
-import { IProduct } from "@/types/data"
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import { Metadata } from "next";
+
+import { client } from "@/sanity/lib/client";
+import { generateGroqQuery } from "@/sanity/lib/query";
+import { Button } from "@/components/ui/button";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { IProduct } from "@/types/data";
+import ProductCard from "@/components/product-card";
+
+
+export const metadata: Metadata = {
+  title: "Nike. Just Do It. Nike IN",
+  description: "Nike delivers innovative products, experiences and services to inspire athletes.",
+}
 
 const page = async () => {
 

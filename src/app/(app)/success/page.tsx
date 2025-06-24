@@ -1,5 +1,11 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Payment Successful",
+  description: "Thank you for your purchase!",
+}
 
 const page = () => {
   return (

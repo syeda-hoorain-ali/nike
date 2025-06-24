@@ -41,7 +41,7 @@ const Navbar = () => {
         <Form action="/products" className="relative">
           <Button variant="ghost" size="icon" type="submit" className="lg:absolute top-0 left-0 rounded-full"><SearchIcon /></Button>
 
-          <Input name="query" className="hidden lg:block rounded-full bg-muted pl-8 w-44" placeholder="Search" defaultValue={searchParams.get('query') || undefined} />
+          <Input name="query" className="hidden lg:block rounded-full bg-muted pl-8 h-9 w-44" placeholder="Search" defaultValue={searchParams.get('query') || undefined} />
         </Form>
 
         <Button variant="ghost" size="icon" className="rounded-full">

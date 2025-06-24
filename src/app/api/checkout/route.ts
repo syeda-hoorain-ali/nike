@@ -50,7 +50,7 @@ export const POST = async (request: NextRequest) => {
 
         const name = `${address.firstName} ${address.lastName}`
         const username = name.replaceAll(' ', '-').toLowerCase()
-        const userId = `user-${address.firstName.toLowerCase()}-${Math.round(Math.random() * 100)}`
+        const userId = `user-${address.firstName.toLowerCase().replaceAll(' ', '-')}-${Math.round(Math.random() * 100)}`
 
         // Send an email receipt to the customer
         await sendReceipt({
@@ -67,6 +67,7 @@ export const POST = async (request: NextRequest) => {
         // Save order details to Sanity
         await client.create({
             _type: "orders",
+            status: "pending",
             userId: userId,
             username: username,
             email: address.email,
@@ -78,7 +79,7 @@ export const POST = async (request: NextRequest) => {
                 productId: item.productId,
                 name: item.name,
                 image: item.image,
-                price: item.price / 100,
+                price: item.price,
                 quantity: item.quantity
             })),
             shipping: {

@@ -6,20 +6,20 @@ import { Logo } from "../icons"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import { CheckoutProvider, useCheckout } from "@/context/checkout-context"
-import { ClerkProvider } from "@clerk/nextjs"
+import { AuthProvider } from "@/context/auth-context"
 import { getPaymentIntent } from "@/lib/data"
 import { Loader2Icon } from "lucide-react"
 
 
 const Providers = ({ children }: PropsWithChildren) => {
   return (
-    <ClerkProvider>
+    <AuthProvider>
       <CartProvider>
         <CheckoutProvider>
           {children}
         </CheckoutProvider>
       </CartProvider>
-    </ClerkProvider>
+    </AuthProvider>
   )
 }
 

@@ -17,6 +17,7 @@ export const sendReceipt = async (params: ReceiptEmailParams) => {
             to: params.email,
             subject: "You order's is on its way.",
             react: ReceiptEmail({ ...params }),
+            replyTo: "jagjets133@gmail.com",
         });
 
         return response

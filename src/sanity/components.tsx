@@ -1,9 +1,9 @@
 "use client";
 
-import { ObjectInputProps, PreviewProps } from "sanity";
+import { ObjectInputProps, PreviewProps, NumberInputProps } from "sanity";
 import { Box, Flex, Text } from "@sanity/ui";
 import { Rating as ReactRating } from '@smastrom/react-rating';
-import { FilesIcon, ShirtIcon, ShoppingBagIcon } from "lucide-react";
+import { FilesIcon, ShirtIcon, ShoppingBagIcon, User2Icon } from "lucide-react";
 import '@smastrom/react-rating/style.css';
 import Image from "next/image";
 
@@ -39,7 +39,7 @@ export const OrderProductPreview = (props: OrderProductPreviewProps) => {
       fill
       src={image as string}
       alt={name || "Product"}
-      style={{ width: "100%", height: "auto" }}
+      style={{ width: "100%" }}
     />,
   };
 
@@ -53,8 +53,39 @@ export const OrderProductPreview = (props: OrderProductPreviewProps) => {
   );
 };
 
+export const TotalAmountDisplay = ({ value }: NumberInputProps) => {
+  // Format the amount as Indian Rupees
+  const formatAmount = (amount: number | undefined) => {
+    if (!amount) return '₹0.00';
+    
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  };
 
+  return (
+    <Box
+      padding={3}
+      style={{
+        backgroundColor: '#f8f9fa',
+        border: '1px solid #e9ecef',
+        borderRadius: '6px',
+        display: 'inline-block',
+        minWidth: '140px',
+        textAlign: 'center'
+      }}
+    >
+      <Text size={2} weight="semibold" style={{ color: '#212529' }}>
+        {formatAmount(value)}
+      </Text>
+    </Box>
+  );
+};
 
 export const OrderIcon = () => <ShoppingBagIcon />
 export const ProductsIcon = () => <ShirtIcon />
 export const CategoryIcon = () => <FilesIcon />
+export const UserIcon = () => <User2Icon />

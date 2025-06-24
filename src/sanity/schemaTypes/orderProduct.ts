@@ -21,7 +21,7 @@ export const orderProduct = defineType({
         defineField({
             name: "image",
             title: "Image",
-            type: "image",
+            type: "string",
            validation: Rule => Rule.required(),
         }),
         defineField({

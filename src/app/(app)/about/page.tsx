@@ -1,7 +1,12 @@
-
+import { Metadata } from "next"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Our mission is to bring inspiration and innovation to every athlete in the world.",
+}
 
 const AboutPage = () => {
   return (
@@ -33,7 +38,7 @@ const AboutPage = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
             <p className="text-gray-600 mb-4">
               Founded in 1964 as Blue Ribbon Sports, Nike has grown from a small distributor 
-              to the world's largest supplier of athletic shoes and apparel. Our journey began 
+              to the world&apos;s largest supplier of athletic shoes and apparel. Our journey began 
               with a handshake between Bill Bowerman and Phil Knight, driven by a shared passion 
               for running and a belief that athletic footwear could be improved.
             </p>
@@ -68,7 +73,7 @@ const AboutPage = () => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Innovation</h3>
             <p className="text-gray-600">
-              We push the boundaries of what's possible, constantly evolving our products 
+              We push the boundaries of what&apos;s possible, constantly evolving our products 
               and processes to serve athletes better.
             </p>
           </div>
@@ -79,7 +84,7 @@ const AboutPage = () => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Sustainability</h3>
             <p className="text-gray-600">
-              We're committed to creating a better future for sport and the planet through 
+              We&apos;re committed to creating a better future for sport and the planet through 
               sustainable design and manufacturing.
             </p>
           </div>
@@ -111,7 +116,7 @@ const AboutPage = () => {
           <div className="order-1 md:order-2">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Innovation Lab</h2>
             <p className="text-gray-600 mb-4">
-              At Nike, innovation isn't just a buzzword—it's our driving force. Our team of 
+              At Nike, innovation isn&apos;t just a buzzword—it&apos;s our driving force. Our team of 
               designers, engineers, and scientists work tirelessly to create products that 
               enhance athletic performance and comfort.
             </p>
@@ -147,7 +152,7 @@ const AboutPage = () => {
         <h2 className="text-3xl md:text-5xl font-bold mb-6 uppercase">Just Do It</h2>
         <p className="text-lg mb-8 max-w-2xl mx-auto">
           Join millions of athletes worldwide who trust Nike to help them achieve their goals. 
-          Whether you're just starting out or pushing for a personal best, we're here to support your journey.
+          Whether you&apos;re just starting out or pushing for a personal best, we&apos;re here to support your journey.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button variant="secondary" className="px-8 py-3">

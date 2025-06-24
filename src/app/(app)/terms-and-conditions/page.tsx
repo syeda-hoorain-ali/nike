@@ -1,6 +1,11 @@
-
 import { Logo } from "@/components/icons"
 import Link from "next/link"
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms and Conditions",
+  description: "By accessing and using Nike's website, mobile application, and services, you accept and agree to be bound by the terms and provision of this agreement.",
+}
 
 const TermsAndConditionsPage = () => {
   return (
@@ -17,19 +22,19 @@ const TermsAndConditionsPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-4">Acceptance of Terms</h2>
           <p className="text-[#757575] leading-relaxed">
-            By accessing and using Nike's website, mobile application, and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+            By accessing and using Nike&apos;s website, mobile application, and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
           </p>
         </section>
 
         <section>
           <h2 className="text-xl font-semibold mb-4">Use License</h2>
           <p className="text-[#757575] leading-relaxed mb-4">
-            Permission is granted to temporarily download one copy of the materials on Nike's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
+            Permission is granted to temporarily download one copy of the materials on Nike&apos;s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:
           </p>
           <ul className="list-disc list-inside space-y-2 text-[#757575]">
             <li>modify or copy the materials</li>
             <li>use the materials for any commercial purpose or for any public display (commercial or non-commercial)</li>
-            <li>attempt to decompile or reverse engineer any software contained on Nike's website</li>
+            <li>attempt to decompile or reverse engineer any software contained on Nike&apos;s website</li>
             <li>remove any copyright or other proprietary notations from the materials</li>
           </ul>
           <p className="text-[#757575] leading-relaxed mt-4">
@@ -133,7 +138,7 @@ const TermsAndConditionsPage = () => {
         <section>
           <h2 className="text-xl font-semibold mb-4">Disclaimers</h2>
           <p className="text-[#757575] leading-relaxed">
-            The information on this website is provided on an 'as is' basis. To the fullest extent permitted by law, Nike excludes all representations, warranties, conditions and terms whether express or implied, statutory or otherwise. Nike does not warrant that the website will be constantly available or available at all.
+            The information on this website is provided on an &apos;as is&apos; basis. To the fullest extent permitted by law, Nike excludes all representations, warranties, conditions and terms whether express or implied, statutory or otherwise. Nike does not warrant that the website will be constantly available or available at all.
           </p>
         </section>
 

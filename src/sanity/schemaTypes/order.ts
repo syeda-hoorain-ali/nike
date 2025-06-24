@@ -1,5 +1,5 @@
-import { OrderIcon } from "../components";
 import { defineField, defineType } from "sanity";
+import { OrderIcon, TotalAmountDisplay } from "../components";
 
 export const order = defineType({
     name: "orders",
@@ -53,6 +53,25 @@ export const order = defineType({
         }),
 
         defineField({
+            name: "status",
+            title: "Status",
+            type: "string",
+            options: {
+                list: [
+                    { title: "Pending", value: "pending" },
+                    { title: "Processing", value: "processing" },
+                    { title: "Shipped", value: "shipped" },
+                    { title: "Delivered", value: "delivered" },
+                    { title: "Cancelled", value: "cancelled" },
+                    { title: "Refunded", value: "refunded" },
+                ],
+            },
+            group: "order-details",
+            description: "",
+            validation: Rule => Rule.required().min(0),
+        }),
+
+        defineField({
             name: "products",
             title: "Products",
             type: "array",
@@ -72,6 +91,22 @@ export const order = defineType({
             group: "order-details",
             description: "Total amount paid for the order",
             validation: Rule => Rule.required().min(0),
+            components: {
+                input: TotalAmountDisplay,
+            },
+        }),
+
+        defineField({
+            name: "paymentStatus",
+            title: "Payment Status",
+            type: "string",
+            group: "order-details",
+            options: {
+                list: ["pending", "completed", "failed"],
+                layout: "radio"
+            },
+            description: "Status of the payment",
+            validation: Rule => Rule.required(),
         }),
 
         defineField({

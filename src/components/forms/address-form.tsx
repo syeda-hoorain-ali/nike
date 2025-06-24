@@ -114,7 +114,7 @@ const AddressForm = () => {
       products
     })
     
-    console.log(rates)
+    console.log('Rates: ', rates)
     if (rates.length > 0) setRates(rates)
 
     setAddress(data)
@@ -355,7 +355,7 @@ const AddressForm = () => {
           {isLoading ?
             <Loader2Icon className="animate-spin" stroke="#fff" />
             : null}
-          Countinue
+          Continue
         </Button>
       </form>
     </Form>

@@ -17,7 +17,6 @@ export default function TrackingSamplePage() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('trackingNumber', trackingNumber)
 
     setLoading(true)
     const result = await trackOrder(trackingNumber)

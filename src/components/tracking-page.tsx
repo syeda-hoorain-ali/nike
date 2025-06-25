@@ -17,7 +17,6 @@ export default function TrackingPage() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('trackingNumber', trackingNumber)
 
     setLoading(true)
     const result = await trackOrder(trackingNumber)
@@ -32,7 +31,6 @@ export default function TrackingPage() {
       setError(result.carrierStatusDescription)
     }
 
-    console.log(result)
     setResult(result)
     setLoading(false)
   }

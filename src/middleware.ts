@@ -1,41 +1,35 @@
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
-const isProtectedRoute = (pathname: string) => {
-  return /^\/cart(\/.*)?$/.test(pathname) ||
-    /^\/checkout(\/.*)?$/.test(pathname) ||
-    /^\/success(\/.*)?$/.test(pathname) ||
-    /^\/profile(\/.*)?$/.test(pathname) ||
-    pathname === '/logout'
-}
 
-const isAuthRoute = (pathname: string) => {
-  return /^\/join-us(\/.*)?$/.test(pathname) ||
-    /^\/sign-in(\/.*)?$/.test(pathname) ||
-    /^\/forgot-password(\/.*)?$/.test(pathname)
-}
+const isProtectedRoute = createRouteMatcher([
+  "/cart",
+  "/checkout",
+  "/success",
+  "/profile",
+  "/auth/logout",
+])
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl
+const isAuthRoute = createRouteMatcher([
+  "/auth/join-us",
+  "/auth/sign-in",
+  "/auth/forgot-password",
+])
 
-  // Get session from cookies or headers
-  const sessionId = request.cookies.get('sessionId')?.value ||
-    request.headers.get('authorization')?.replace('Bearer ', '')
+export default clerkMiddleware(async (auth, req) => {
 
-  const isAuthenticated = !!sessionId
+  const {sessionId } = await auth()
 
   // Redirect unauthenticated users from protected routes
-  if (isProtectedRoute(pathname) && !isAuthenticated) {
-    return NextResponse.redirect(new URL('/sign-in', request.url))
+  if (isProtectedRoute(req) && !sessionId) {
+    return NextResponse.redirect(new URL('/auth/sign-in', req.url))
   }
 
   // Redirect authenticated users from auth routes
-  if (isAuthRoute(pathname) && isAuthenticated) {
-    return NextResponse.redirect(new URL('/', request.url))
+  if (isAuthRoute(req) && sessionId) {
+    return NextResponse.redirect(new URL('/', req.url))
   }
-
-  return NextResponse.next()
-}
+})
 
 export const config = {
   matcher: [

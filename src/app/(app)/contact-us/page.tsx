@@ -37,10 +37,10 @@ const page = () => {
           </div>
 
           <div>
-            <p className="my-4"><Link className="font-semibold hover:underline" href='/signup'>Nike Members</Link> {' '} can store multiple debit or credit cards in their profile for faster checkout. If you&apos;re not already a Member, {' '}<Link className="font-semibold hover:underline" href='/signup'>join us</Link> {' '} today.</p>
+            <p className="my-4"><Link className="font-semibold hover:underline" href='/auth/join-us'>Nike Members</Link> {' '} can store multiple debit or credit cards in their profile for faster checkout. If you&apos;re not already a Member, {' '}<Link className="font-semibold hover:underline" href='/auth/join-us'>join us</Link> {' '} today.</p>
 
             <div className="flex gap-4">
-              <Link href='/signup'><Button className="uppercase">Join us</Button></Link>
+              <Link href='/auth/join-us'><Button className="uppercase">Join us</Button></Link>
               <Link href='/products'><Button className="uppercase">Shop nike</Button></Link>
             </div>
           </div>

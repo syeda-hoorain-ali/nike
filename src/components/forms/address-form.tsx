@@ -107,14 +107,12 @@ const AddressForm = () => {
       quantity: item.quantity,
       price: item.price
     }))
-    console.log(data)
 
     const rates = await getRates({
       address: { ...data, addressLine1: data.addressLine1.slice(0, 50) },
       products
     })
     
-    console.log('Rates: ', rates)
     if (rates.length > 0) setRates(rates)
 
     setAddress(data)

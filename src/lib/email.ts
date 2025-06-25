@@ -23,7 +23,7 @@ export const sendReceipt = async (params: ReceiptEmailParams) => {
         return response
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return { data: null, error: null }
     }
 }

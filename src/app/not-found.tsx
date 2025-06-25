@@ -3,7 +3,6 @@
 import Headline from "@/components/layout/headline"
 import Navbar from "@/components/layout/navbar"
 import { Button } from "@/components/ui/button"
-import { Logo } from "@/components/icons"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 
@@ -16,10 +15,6 @@ export default function NotFound() {
 
     <main className="min-h-[calc(100vh-6.5rem)] bg-gray-50 flex flex-col items-center justify-center px-4">
       <div className="max-w-md mx-auto text-center">
-        {/* Nike Logo */}
-        <div className="mb-8">
-          <Logo />
-        </div>
 
         {/* 404 Number */}
         <div className="mb-6">

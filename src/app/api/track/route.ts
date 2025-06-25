@@ -17,7 +17,6 @@ export const GET = async (request: NextRequest) => {
         }
 
         const shipping = await client.fetch(trackingQuery, { trackingNumber })
-        console.log('shipping', shipping)
 
         if (!shipping) {
             return NextResponse.json({
@@ -26,7 +25,6 @@ export const GET = async (request: NextRequest) => {
             }, { status: 400 });
         }
 
-        console.log('shipping', shipping)
         const response = await trackParcel(shipping)
 
         if(typeof response == 'string') {

@@ -6,20 +6,24 @@ import { Logo } from "../icons"
 import { Elements } from "@stripe/react-stripe-js"
 import { loadStripe } from "@stripe/stripe-js"
 import { CheckoutProvider, useCheckout } from "@/context/checkout-context"
-import { AuthProvider } from "@/context/auth-context"
+import { NikeAuthProvider } from "@/context/auth-context"
 import { getPaymentIntent } from "@/lib/data"
 import { Loader2Icon } from "lucide-react"
+import { ClerkProvider } from "@clerk/nextjs"
 
 
 const Providers = ({ children }: PropsWithChildren) => {
   return (
-    <AuthProvider>
-      <CartProvider>
-        <CheckoutProvider>
-          {children}
-        </CheckoutProvider>
-      </CartProvider>
-    </AuthProvider>
+    <ClerkProvider>
+
+      <NikeAuthProvider>
+        <CartProvider>
+          <CheckoutProvider>
+            {children}
+          </CheckoutProvider>
+        </CartProvider>
+      </NikeAuthProvider>
+    </ClerkProvider>
   )
 }
 

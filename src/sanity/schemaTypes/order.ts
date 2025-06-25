@@ -200,7 +200,6 @@ export const order = defineType({
                 (total: number, item: { quantity: number }) => total + item.quantity,
                 0)
 
-            console.log(products)
             return {
                 title: `${username}'s Order`,
                 subtitle: `${totalProducts} product(s)`

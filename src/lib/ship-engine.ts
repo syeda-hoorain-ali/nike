@@ -45,12 +45,11 @@ export const getRates = async (address: ShippingAddress, products: ShippingProdu
                 }
             }
         })
-        console.log('Shipengine response: ', response.rateResponse)
-
+        
         return response.rateResponse.rates || []
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return []
     }
 }
@@ -61,7 +60,7 @@ export const createLabel = async (rateId: string) => {
         return label
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return (error as Error).message
     }
 }
@@ -73,7 +72,7 @@ export const trackParcel = async (params: { carrierCode: string, trackingNumber:
         return response
 
     } catch (error) {
-        console.log(error)
+        console.error(error)
         return (error as Error).message
     }
 }

@@ -10,6 +10,8 @@ import { CartIcon } from "@/components/icons";
 import { useShoppingCart } from "use-shopping-cart";
 import { toast } from "react-toastify";
 import { useState } from "react";
+import { useNikeAuth } from "@/context/auth-context";
+import { useRouter } from "next/navigation";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ['400', '600'] });
 
@@ -17,6 +19,8 @@ export default function ProductDetails({ product: initialProduct }: { product: I
   const [product, setProduct] = useState(initialProduct);
   const { addItem, cartDetails } = useShoppingCart();
   const cart: ICartProduct[] = Object.values(cartDetails ?? {}) as ICartProduct[]
+  const { isAuthenticated } = useNikeAuth();
+  const router = useRouter();
 
   const cartProduct: Product = {
     price_id: product.price_id,
@@ -33,6 +37,11 @@ export default function ProductDetails({ product: initialProduct }: { product: I
   }
 
   const addToCart = () => {
+    if (!isAuthenticated) {
+      toast.error("Please sign in to add products to your cart.");
+      router.push("/auth/sign-in");
+      return;
+    }
     if (product.stock < 1) {
       toast.error("Out of stock");
       return;

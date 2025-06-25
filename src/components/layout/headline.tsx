@@ -2,14 +2,10 @@
 
 import Link from "next/link"
 import { SportsMan } from "../icons"
-import { useAuth } from "@/context/auth-context";
+import { useNikeAuth } from "@/context/auth-context";
 
 const Headline = () => {
-  const { isAuthenticated, user, signOut } = useAuth()
-
-  const handleSignOut = () => {
-    signOut()
-  }
+  const { isAuthenticated, user } = useNikeAuth()
 
   return (
     <div className="w-full bg-muted">
@@ -28,12 +24,12 @@ const Headline = () => {
             <>
               <Link href='/profile'>{user.firstName} {user.lastName}</Link>
               <span>|</span>
-              <button onClick={handleSignOut} className="hover:underline">Logout</button>
+              <Link href='/auth/logout'>Logout</Link>
             </> :
             <>
-              <Link href='/join-us'>Join us</Link>
+              <Link href='/auth/join-us'>Join us</Link>
               <span>|</span>
-              <Link href='/sign-in'>Sign in</Link>
+              <Link href='/auth/sign-in'>Sign in</Link>
             </>
           }
         </div>

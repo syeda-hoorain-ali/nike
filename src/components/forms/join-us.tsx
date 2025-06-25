@@ -19,14 +19,13 @@ import { JoinUsFormData, joinUsSchema } from "@/schema/joinUsSchema"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import { useAuth } from "@/context/auth-context"
+import { useNikeAuth } from "@/context/auth-context"
 
 const JoinUsForm = () => {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const { signUp } = useAuth()
+  const { signUp } = useNikeAuth()
   const router = useRouter()
-
 
 
   const form = useForm<JoinUsFormData>({
@@ -48,7 +47,7 @@ const JoinUsForm = () => {
 
     try {
       const result = await signUp({
-        ...data, 
+        ...data,
         emailConsesnt: data.emailConsent,
         username: data.email.split("@")[0],
       })
@@ -56,6 +55,7 @@ const JoinUsForm = () => {
       if (result.success) {
         toast.success("Account created successfully!")
         router.push("/")
+        router.refresh()
       } else {
         setError(result.error || "Failed to create account")
       }
@@ -276,7 +276,7 @@ const JoinUsForm = () => {
 
         <p className="text-[#8d8d8d] text-sm text-center">
           Already have an account? {' '}
-          <Link className="underline text-black" href='/sign-in'>Sign In</Link>.
+          <Link className="underline text-black" href='/authsign-in'>Sign In</Link>.
         </p>
       </form>
     </Form>

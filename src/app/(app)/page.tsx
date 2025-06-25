@@ -32,7 +32,7 @@ const page = async () => {
     </div>
 
     <main className="max-w-screen-xl mx-auto">
-      <Image src="/images/hero-image.png" alt="" height={700} width={1280} />
+      <Image src="/images/hero-image.png" priority alt="" height={700} width={1280} />
 
       <div className="mt-12 flex flex-col gap-4 items-center">
         <span className="font-semibold">First Look</span>

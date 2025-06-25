@@ -78,7 +78,6 @@ export const CheckoutProvider = ({ children }: PropsWithChildren) => {
   }, [selectedRate, currency, totalPrice]);
 
   const checkout = async () => {
-    console.log("selectedRate: ", selectedRate)
     try {
       const data = {
         address,

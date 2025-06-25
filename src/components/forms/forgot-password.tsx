@@ -10,7 +10,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input"
 import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "@/components/ui/input-otp"
 import { emailSchema, EmailFormData, resetPasswordSchema, ResetPasswordFormData } from "@/schema/forgotPasswordSchema"
-import { useAuth } from "@/context/auth-context"
+import { useNikeAuth } from "@/context/auth-context"
 
 const ForgotPasswordForm = () => {
   const [error, setError] = useState("")
@@ -18,7 +18,7 @@ const ForgotPasswordForm = () => {
   const [email, setEmail] = useState("")
 
   const router = useRouter()
-  const { forgotPassword, resetPassword } = useAuth()
+  const { forgotPassword, resetPassword } = useNikeAuth()
 
   const emailForm = useForm<EmailFormData>({
     resolver: zodResolver(emailSchema),
@@ -55,7 +55,7 @@ const ForgotPasswordForm = () => {
 
     if (result.success) {
       setError("")
-      router.push("/sign-in")
+      router.push("/auth/sign-in")
     } else {
       setError(result.error || "Failed to reset password")
     }

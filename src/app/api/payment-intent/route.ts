@@ -10,8 +10,6 @@ export const POST = async (request: NextRequest) => {
             currency
         });
 
-        console.log("payment intent: ", paymentIntent)
-
         return NextResponse.json({
             success: true,
             message: 'Payment intent created',
@@ -20,7 +18,7 @@ export const POST = async (request: NextRequest) => {
 
     } catch (error) {
         
-        console.log("Error creating payment intent: ", error)
+        console.error("Error creating payment intent: ", error)
 
         return NextResponse.json({
             success: false,

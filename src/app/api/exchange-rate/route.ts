@@ -29,7 +29,7 @@ export const GET = async (request: NextRequest) => {
 
         } catch (error) {
             const err = error as AxiosError
-            console.log(err)
+            console.error(err)
 
             return NextResponse.json({
                 success: false,

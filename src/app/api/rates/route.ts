@@ -14,11 +14,9 @@ export const POST = async (request: NextRequest) => {
     try {
         const { address, products } = (await request.json()) as ResponseType;
 
-
         const shippingProducts: ShippingProduct[] = []
 
         for (const product of products) {
-
             try {
                 const usdAmount = await exchangeRate('inr', 'usd', product.price)
 

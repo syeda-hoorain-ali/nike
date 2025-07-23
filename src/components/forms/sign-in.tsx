@@ -14,10 +14,12 @@ import { SignInFormData, signInSchema } from "@/schema/signInSchema"
 import { toast } from "react-toastify"
 import { useState } from "react"
 import { useNikeAuth } from "@/context/auth-context"
+import { EyeClosedIcon, EyeIcon } from "lucide-react";
 
 const SignInForm = () => {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
   const { signIn } = useNikeAuth()
   const router = useRouter()
 
@@ -123,14 +125,26 @@ const SignInForm = () => {
                 </Link>
               </div>
 
-              <FormControl>
-                <Input
-                  className="rounded p-4 h-12"
-                  placeholder="Password"
-                  type="password"
-                  {...field}
-                />
-              </FormControl>
+              <div className="relative">
+                <FormControl>
+                  <Input
+                    {...field}
+                    placeholder="Password"
+                    className="rounded p-4 h-12"
+                    type={showPassword ? "text" : "password"}
+                  />
+                </FormControl>
+                <Button
+                  size="icon"
+                  type="button"
+                  variant="ghost"
+                  className="absolute top-1.5 right-2"
+                  onClick={() => setShowPassword(prev => !prev)}
+                >
+                  {showPassword ? <EyeClosedIcon /> : <EyeIcon />}
+                </Button>
+              </div>
+
               <FormMessage />
             </FormItem>
           )}
@@ -160,14 +174,14 @@ const SignInForm = () => {
           {isLoading ? "Signing in..." : "Sign in"}
         </Button>
 
-        <div className="relative">
+        {/* <div className="relative">
           <div className="absolute inset-0 flex items-center">
             <span className="w-full border-t" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-white px-2 text-muted-foreground">Or continue with</span>
           </div>
-        </div>
+        </div> */}
 
         <p className="text-[#8d8d8d] text-sm text-center">
           Not a Member? {' '}

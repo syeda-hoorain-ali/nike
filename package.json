@@ -1,6 +1,6 @@
 {
   "name": "hackathon-02",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -10,7 +10,9 @@
     "migrate": "node scripts/migrate.mjs",
     "cleanup": "node scripts/cleanup.mjs",
     "ngrok": "ngrok http 3000",
-    "email": "email dev --dir src/emails"
+    "email": "email dev --dir src/emails",
+    "sanity-schema": "npx sanity schema extract --enforce-required-fields --path ./src/sanity/schema.json",
+    "sanity-types": "npm run sanity-schema && npx sanity typegen generate"
   },
   "dependencies": {
     "@clerk/clerk-js": "^5.69.1",
@@ -32,7 +34,7 @@
     "@react-google-maps/api": "^2.20.6",
     "@sanity/image-url": "^1.1.0",
     "@sanity/ui": "^2.16.0",
-    "@sanity/vision": "^3.93.0",
+    "@sanity/vision": "^3.99.0",
     "@sanity/webhook": "^4.0.4",
     "@smastrom/react-rating": "^1.5.0",
     "@stripe/react-stripe-js": "^3.7.0",
@@ -46,14 +48,14 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.468.0",
     "next": "^15.3.3",
-    "next-sanity": "^9.12.0",
+    "next-sanity": "^9.12.3",
     "react": "19.1.0",
     "react-day-picker": "^9.7.0",
     "react-dom": "19.1.0",
     "react-hook-form": "^7.58.1",
     "react-toastify": "^11.0.5",
     "resend": "^4.6.0",
-    "sanity": "^3.93.0",
+    "sanity": "^3.99.0",
     "shipengine": "^1.0.7",
     "shippo": "^2.15.0",
     "simple-git": "^3.28.0",
@@ -65,6 +67,7 @@
     "zod": "^3.25.67"
   },
   "devDependencies": {
+    "@sanity/types": "^4.1.1",
     "@types/node": "^20",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

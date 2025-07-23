@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { CalendarIcon } from "lucide-react"
+import { CalendarIcon, EyeClosedIcon, EyeIcon } from "lucide-react"
 import { format } from "date-fns"
 import { toast } from "react-toastify"
 import { useForm } from "react-hook-form"
@@ -24,6 +24,7 @@ import { useNikeAuth } from "@/context/auth-context"
 const JoinUsForm = () => {
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
   const { signUp } = useNikeAuth()
   const router = useRouter()
 
@@ -93,13 +94,24 @@ const JoinUsForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormControl>
-                  <Input
-                    {...field}
-                    type="password"
-                    placeholder="Password"
-                  />
-                </FormControl>
+                <div className="relative">
+                  <FormControl>
+                    <Input
+                      {...field}
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Password"
+                    />
+                  </FormControl>
+                  <Button
+                    size="icon"
+                    type="button"
+                    variant="ghost"
+                    className="absolute top-1.5 right-2"
+                    onClick={() => setShowPassword(prev => !prev)}
+                  >
+                    {showPassword ? <EyeClosedIcon /> : <EyeIcon />}
+                  </Button>
+                </div>
                 <FormMessage />
               </FormItem>
             )}

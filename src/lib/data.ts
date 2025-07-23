@@ -53,9 +53,10 @@ export const getRates = async (params: RatesParams) => {
 }
 
 export const exchangeRate = async (from: string, to: string, amount: number): Promise<number | null> => {
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
     try {
         const { data } = await axios.get<ExchangeRatesApiResponse>(
-            `/api/exchange-rate?from=${from}&to=${to}&amount=${amount}`
+            `${baseUrl}/api/exchange-rate?from=${from}&to=${to}&amount=${amount}`
         )
         return data.convertedAmount || null
 

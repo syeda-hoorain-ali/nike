@@ -2,12 +2,20 @@ import { sendReceipt } from '@/lib/email';
 import { createLabel } from '@/lib/ship-engine';
 import { client } from '@/sanity/lib/client';
 import { NextRequest, NextResponse } from 'next/server';
-
+import { currentUser } from '@clerk/nextjs/server'
 
 export const POST = async (request: NextRequest) => {
 
     try {
         const { products, address, rateId, totalAmount, shippingRate, carrierCode } = await request.json();
+        const user = await currentUser()
+
+        if (!user) {
+            return NextResponse.json(
+                { success: false, message: 'Unauthorized' },
+                { status: 401 }
+            );
+        }
 
         const sanityProducts = []
 
@@ -30,7 +38,7 @@ export const POST = async (request: NextRequest) => {
             sanityProducts.push({
                 productId,
                 name,
-                image, 
+                image,
                 category: category.name,
                 price,
                 quantity,
@@ -49,15 +57,13 @@ export const POST = async (request: NextRequest) => {
         }
 
         const name = `${address.firstName} ${address.lastName}`
-        const username = name.replaceAll(' ', '-').toLowerCase()
-        const userId = `user-${address.firstName.toLowerCase().replaceAll(' ', '-')}-${Math.round(Math.random() * 100)}`
-
+        const orderNumber = await generateUniqueOrderNumber()
         // Send an email receipt to the customer
         await sendReceipt({
             tracking_id: label.trackingNumber,
             address: address.addressLine1,
             name: name,
-            order_number: 'NK' + Math.round(Math.random() * 10000),
+            order_number: orderNumber,
             created_at: new Date(),
             products: sanityProducts,
             email: address.email,
@@ -68,8 +74,9 @@ export const POST = async (request: NextRequest) => {
         await client.create({
             _type: "orders",
             status: "pending",
-            userId: userId,
-            username: username,
+            userId: user.id,
+            orderNumber: orderNumber,
+            username: user.username,
             email: address.email,
             phoneNo: address.phone,
             totalAmount: totalAmount,
@@ -105,10 +112,35 @@ export const POST = async (request: NextRequest) => {
 
     } catch (err) {
         console.error('Internel server error', err);
-        
+
         return NextResponse.json({
             success: false,
             message: (err as Error).message || "Internal server error"
         }, { status: 500 });
     }
 };
+
+
+
+// Utility functions
+
+async function isorderNumberUnique(orderNumber: string) {
+  const result = await client.fetch(
+    `*[_type == "orders" && orderNumber == $orderNumber][0]`,
+    { orderNumber }
+  );
+  return !result;
+}
+
+
+async function generateUniqueOrderNumber() {
+    let orderNumber = '';
+    let isUnique = false;
+
+    while (!isUnique) {
+        orderNumber = 'NK' + Math.floor(10000 + Math.random() * 90000);
+        isUnique = await isorderNumberUnique(orderNumber);
+    }
+    return orderNumber;
+}
+

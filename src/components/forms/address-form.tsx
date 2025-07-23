@@ -66,7 +66,7 @@ const AddressForm = () => {
       // postalCode: "",
       // country: "",
       // state: "",
-      // city: ""
+      // city: "",
       firstName: "Afroz",
       lastName: "Kanwal",
       email: "jagjets133@gmail.com",

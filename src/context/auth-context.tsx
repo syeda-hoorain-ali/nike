@@ -261,7 +261,7 @@ export function NikeAuthProvider({ children }: { children: React.ReactNode }) {
 
   return <AuthContext.Provider value={value}>
     {children}
-    {/* <div id="clerk-captcha" /> */}
+    <div id="clerk-captcha" />
   </AuthContext.Provider>
 }
 
